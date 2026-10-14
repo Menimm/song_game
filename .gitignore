@@ -1,0 +1,6 @@
+node_modules/
+songs/
+data/index.json
+.remember/
+.superpowers/
+*.log
