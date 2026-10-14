@@ -76,7 +76,7 @@ function gameView() {
     body = el('div', { class: 'card' }, el('h3', { text: '⏸ הפסקה קצרה' }));
   } else if (s.phase === 'revealed') {
     const r = s.reveal;
-    const verdict = r.winnerId === me.id ? `🎉 ניחשת! +${r.points}` : r.winnerName ? `${r.winnerName} ניחשה (+${r.points})` : 'אף אחת לא ניחשה 🙈';
+    const verdict = r.winnerId === me.id ? `🎉 ניחשת! (${r.points} נק׳)` : r.winnerName ? `${r.winnerName} ניחשה (${r.points} נק׳)` : 'אף אחת לא ניחשה 🙈';
     body = el('div', {}, el('div', { class: 'card' }, r.art ? el('img', { src: r.art, width: 160, alt: '' }) : null,
       el('h2', { dir: 'auto', text: r.title }), el('div', { dir: 'auto', text: r.artist }),
       r.hook ? el('div', { class: 'muted', dir: 'auto', text: r.hook }) : null, el('h3', { text: verdict })),

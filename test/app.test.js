@@ -93,6 +93,24 @@ test('a tunnelled client cannot act as host or tv; tunnelled HTTP gets 404 for p
   await app.close();
 });
 
+test('a WebSocket from a foreign web page (cross-site Origin) is refused; same-origin is accepted', async () => {
+  const { app, port } = await boot();
+  const refused = await new Promise((resolve) => {
+    const ws = new WebSocket(`ws://127.0.0.1:${port}/ws`, { headers: { origin: 'http://evil.example' } });
+    ws.on('open', () => resolve('open'));
+    ws.on('error', () => resolve('refused'));
+    ws.on('close', () => resolve('refused'));
+  });
+  assert.equal(refused, 'refused');
+  const ok = await new Promise((resolve) => {
+    const ws = new WebSocket(`ws://127.0.0.1:${port}/ws`, { headers: { origin: `http://127.0.0.1:${port}` } });
+    ws.on('open', () => { ws.close(); resolve('open'); });
+    ws.on('error', () => resolve('refused'));
+  });
+  assert.equal(ok, 'open');
+  await app.close();
+});
+
 test('missing song file at preload flags the song unavailable and the game continues', async () => {
   const { app, port } = await boot();
   const host = client(port); await host.open; host.send({ t: 'hello', role: 'host' });

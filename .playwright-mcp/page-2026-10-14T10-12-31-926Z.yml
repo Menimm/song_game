@@ -1,0 +1,8 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - heading "המסיבה של מאי 🎶" [level=2] [ref=e5]
+    - paragraph [ref=e6]: מזהים שיר מההתחלה!
+  - generic [ref=e7]:
+    - textbox "קוד" [ref=e8]: PQWW
+    - textbox "הכינוי שלך" [ref=e9]
+    - button "יאללה, נכנסים!" [ref=e11] [cursor=pointer]

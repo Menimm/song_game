@@ -38,7 +38,7 @@ function stage(s) {
       r.art ? el('img', { src: r.art, style: 'height:32vh;border-radius:20px', alt: '' }) : el('img', { src: '/img/capybara.svg', width: 200, alt: '' }),
       el('h1', { dir: 'auto', text: r.title }), el('h2', { dir: 'auto', text: r.artist }),
       r.hook ? el('div', { class: 'muted', dir: 'auto', text: r.hook }) : null,
-      el('h2', { text: r.winnerName ? `🎉 ${r.winnerName} ניחשה! +${r.points}` : 'אף אחת לא ניחשה 🙈' }));
+      el('h2', { text: r.winnerName ? `🎉 ${r.winnerName} ניחשה! (${r.points} נק׳)` : 'אף אחת לא ניחשה 🙈' }));
   }
   return el('div', { class: 'stage' }, dots(s),
     s.phase === 'paused' ? el('h1', { text: '⏸ הפסקה' }) : el('div', { class: 'huge', 'data-secs': '' }),

@@ -7,6 +7,13 @@ export function attachHub({ server, game }) {
 
   server.on('upgrade', (req, socket, head) => {
     if (!req.url.startsWith('/ws')) return socket.destroy();
+    // Block cross-site WebSocket hijacking: a web page the operator happens to visit must not drive the host.
+    const origin = req.headers.origin;
+    if (origin) {
+      let same = false;
+      try { same = new URL(origin).host === req.headers.host; } catch { /* malformed */ }
+      if (!same) return socket.destroy();
+    }
     const local = isLocalRequest(req);
     wss.handleUpgrade(req, socket, head, (ws) => { ws.local = local; wss.emit('connection', ws, req); });
   });

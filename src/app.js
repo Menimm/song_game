@@ -37,6 +37,7 @@ export async function createApp({ config, timers = realTimers, rng = Math.random
 
   app.use((req, res, next) => (PRIVATE_FILES.test(req.path) && !isLocalRequest(req) ? res.status(404).end() : next()));
   app.get('/healthz', (req, res) => res.send('ok'));
+  app.get('/favicon.ico', (req, res) => res.status(204).end());
   app.get('/api/join', (req, res) => res.json({ code: game.code, url: joinUrl() }));
   app.get('/api/join-qr.svg', async (req, res) => {
     res.type('image/svg+xml').send(await QRCode.toString(joinUrl(), { type: 'svg', margin: 1 }));

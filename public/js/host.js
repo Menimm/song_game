@@ -76,11 +76,12 @@ function players(s) {
 function render() {
   if (!state) return;
   const s = state;
-  app.replaceChildren(
+  app.replaceChildren(...[
     unlocked ? null : el('div', { class: 'overlay' }, btn('🔊 הפעלת סאונד (חובה לפני שמתחילים)', async () => { await audio.unlock(); unlocked = true; sfx(audio.ctx, 'test'); render(); }, 'sun')),
     el('div', { class: 'top' }, el('span', { text: 'מסך מנחה' }), el('span', { dir: 'ltr', text: `קוד: ${joinInfo.code || s.code}` }), el('span', { dir: 'ltr', text: joinInfo.url }),
       el('a', { href: '/tv', target: '_blank', text: 'פתח טלוויזיה' }), el('a', { href: '/manage', target: '_blank', text: 'ניהול שירים' })),
-    el('div', { class: 'host-grid' }, el('div', {}, controls(s), el('div', { style: 'height:14px' }), players(s)), songList(s)));
+    el('div', { class: 'host-grid' }, el('div', {}, controls(s), el('div', { style: 'height:14px' }), players(s)), songList(s)),
+  ].filter(Boolean));
   tick();
 }
 function tick() { const v = timer.value(); const e = app.querySelector('[data-secs]'); if (v && e) e.textContent = secs(v.remainingMs); }

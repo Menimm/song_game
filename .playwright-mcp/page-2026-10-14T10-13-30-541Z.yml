@@ -1,0 +1,60 @@
+- generic [ref=f2e2]:
+  - generic [ref=f2e143]:
+    - generic [ref=f2e144]: מסך מנחה
+    - generic [ref=f2e145]: "קוד: BUPH"
+    - generic [ref=f2e146]: http://192.168.1.99:3100/play?c=BUPH
+    - link "פתח טלוויזיה" [ref=f2e147] [cursor=pointer]:
+      - /url: /tv
+    - link "ניהול שירים" [ref=f2e148] [cursor=pointer]:
+      - /url: /manage
+  - generic [ref=f2e149]:
+    - generic [ref=f2e150]:
+      - generic [ref=f2e151]:
+        - generic [ref=f2e152]:
+          - generic [ref=f2e153]: שלב פעיל
+          - generic [ref=f2e154]: שלב 1/5
+          - generic [ref=f2e155]: "6"
+        - generic [ref=f2e156]: 🎵 Shake It Off — Taylor Swift
+        - generic [ref=f2e157]:
+          - button "⏸ הפסק" [ref=f2e158] [cursor=pointer]
+          - button "🔁 שוב" [ref=f2e159] [cursor=pointer]
+          - button "➕ ארוך יותר" [ref=f2e160] [cursor=pointer]
+          - button "👀 חשוף" [ref=f2e161] [cursor=pointer]
+          - button "⏭ דלג" [ref=f2e162] [cursor=pointer]
+          - button "➡ הבא" [disabled] [ref=f2e163]
+        - generic [ref=f2e164]:
+          - generic [ref=f2e165]: "ניסיונות (שלבים):"
+          - combobox [ref=f2e166]:
+            - option "1"
+            - option "2"
+            - option "3"
+            - option "4"
+            - option "5" [selected]
+      - generic [ref=f2e168]:
+        - heading "שחקניות (1)" [level=3] [ref=f2e169]
+        - generic [ref=f2e170]:
+          - generic [ref=f2e171]: מאי
+          - generic [ref=f2e172]: "0"
+          - button "+10" [ref=f2e173] [cursor=pointer]
+          - button "−10" [ref=f2e174] [cursor=pointer]
+          - button "✖" [ref=f2e175] [cursor=pointer]
+    - generic [ref=f2e176]:
+      - generic [ref=f2e177]:
+        - heading "שירים" [level=3] [ref=f2e178]
+        - button "🎲 אקראי" [disabled] [ref=f2e179]
+      - generic [ref=f2e180]:
+        - button "▶" [disabled] [ref=f2e181]
+        - generic [ref=f2e182]: Shake It Off — Taylor Swift
+        - generic [ref=f2e183]: שוחק
+      - generic [ref=f2e184]:
+        - button "▶" [disabled] [ref=f2e185]
+        - generic [ref=f2e186]: Nine O'Clock at the circle — Gazoz
+      - generic [ref=f2e187]:
+        - button "▶" [disabled] [ref=f2e188]
+        - generic [ref=f2e189]: Flowers — Miley Cyrus
+      - generic [ref=f2e190]:
+        - button "▶" [disabled] [ref=f2e191]
+        - generic [ref=f2e192]: Spaceship — Gazoz
+      - generic [ref=f2e193]:
+        - button "▶" [disabled] [ref=f2e194]
+        - generic [ref=f2e195]: Eh Oh — Gazoz
