@@ -8,6 +8,7 @@ import { suggestDistractors } from '../library/distractors.js';
 import { loadPool } from '../library/pool.js';
 import { fetchPlaylist, parsePastedList, matchTrack } from '../library/spotify.js';
 import { hasHebrew } from '../library/text.js';
+import { hebrewizeSong } from '../library/hebrew.js';
 
 export function manageRouter({ config, store, index }) {
   const r = express.Router();
@@ -40,7 +41,7 @@ export function manageRouter({ config, store, index }) {
     const existing = store.list().find((s) => s.srcRel === rel);
     if (existing) return res.json(existing);
     try { await fs.access(abs); } catch { return res.status(404).json({ error: 'not_found' }); }
-    res.status(201).json(await ingestFile({ abs, srcRel: rel, config, store }));
+    res.status(201).json(await ingestFile({ abs, srcRel: rel, config, store, aliases: index.aliases }));
   }));
 
   r.post('/upload', express.raw({ type: '*/*', limit: '200mb' }), wrap(async (req, res) => {
@@ -51,7 +52,7 @@ export function manageRouter({ config, store, index }) {
     const tmp = path.join(config.songsDir, `.upload-${randomBytes(4).toString('hex')}${ext}`);
     await fs.writeFile(tmp, req.body);
     let song;
-    try { song = await ingestFile({ abs: tmp, nameHint: name, config, store }); }
+    try { song = await ingestFile({ abs: tmp, nameHint: name, config, store, aliases: index.aliases }); }
     finally { await fs.rm(tmp, { force: true }); }
     res.status(201).json(song);
   }));
@@ -93,6 +94,16 @@ export function manageRouter({ config, store, index }) {
       const extra = suggestDistractors(s, pool.filter((c) => !have.has(c.title)), { count: 3 - s.distractors.length });
       await store.update(s.id, { distractors: [...s.distractors, ...extra] });
       updated++;
+    }
+    res.json({ updated });
+  }));
+
+  // Show Hebrew songs (and their wrong answers) with Hebrew letters where the name is known
+  r.post('/hebrewize', wrap(async (req, res) => {
+    let updated = 0;
+    for (const s of store.list()) {
+      const patch = hebrewizeSong(s, index.aliases);
+      if (patch) { await store.update(s.id, patch); updated++; }
     }
     res.json({ updated });
   }));

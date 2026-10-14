@@ -23,7 +23,7 @@ function normalizeSong(p) {
     art: p.art === 'jpg' || p.art === 'png' ? p.art : null,
     offsetMs: Number.isFinite(p.offsetMs) && p.offsetMs >= 0 ? Math.round(p.offsetMs) : 0,
     hook: str(p.hook, 200),
-    lang: p.lang === 'en' || p.lang === 'he' ? p.lang : HEB.test(title) ? 'he' : 'en',
+    lang: p.lang === 'en' || p.lang === 'he' ? p.lang : (HEB.test(title) || HEB.test(String(p.artist ?? ''))) ? 'he' : 'en',
     bpm: Number.isFinite(p.bpm) ? Math.round(p.bpm) : null,
     enabled: p.enabled !== false,
     unavailable: p.unavailable === true,

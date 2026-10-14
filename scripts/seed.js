@@ -23,7 +23,7 @@ for (const q of SEED) {
   const hit = app.index.search(q, 3)[0];
   if (!hit) { console.log(`x  ${q}  ->  NOT FOUND`); continue; }
   if (app.store.list().some((s) => s.srcRel === hit.rel)) { console.log(`=  ${q}  ->  already in the library`); continue; }
-  const song = await ingestFile({ abs: app.index.resolve(hit.rel), srcRel: hit.rel, config, store: app.store });
+  const song = await ingestFile({ abs: app.index.resolve(hit.rel), srcRel: hit.rel, config, store: app.store, aliases: app.index.aliases });
   console.log(`ok ${q}  ->  ${song.artist} - ${song.title}   [${hit.rel}]`);
 }
 

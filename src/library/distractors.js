@@ -2,12 +2,15 @@ import { normalize, hasHebrew } from './text.js';
 
 const langOf = (x) => x.lang || (hasHebrew(x.title) ? 'he' : 'en');
 
+// "Hips Don't Lie (feat. X)" and "Hips Don't Lie" are the same song for the purpose of wrong answers
+const keyOf = (title) => normalize(String(title ?? '').replace(/\(.*?\)|\[.*?\]/g, ' '));
+
 export function suggestDistractors(song, pool, { rng = Math.random, count = 3 } = {}) {
-  const seen = new Set([normalize(song.title)]);
+  const seen = new Set([keyOf(song.title)]);
   const myLang = langOf(song);
   const scored = [];
   for (const c of pool) {
-    const k = normalize(c.title);
+    const k = keyOf(c.title);
     if (!k || seen.has(k)) continue;
     seen.add(k);
     let s = langOf(c) === myLang ? 50 : 0;

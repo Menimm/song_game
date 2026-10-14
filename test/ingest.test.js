@@ -41,6 +41,15 @@ test('ingest copies the file, stores the entry and writes cover art', async () =
   assert.equal(song.lang, 'he');
 });
 
+test('ingest writes Hebrew songs with Hebrew names when the artist is known', async () => {
+  const { config, store, src } = await env();
+  const aliases = [['noa kirel', 'נועה קירל'], ['tikitas', 'טיקיטאס']];
+  const song = await ingestFile({ abs: src, srcRel: 'x.flac', config, store, aliases, readTags: async () => ({ title: 'Tikitas', artist: 'Noa Kirel', album: '', picture: null }) });
+  assert.deepEqual([song.title, song.artist, song.lang], ['טיקיטאס', 'נועה קירל', 'he']);
+  const en = await ingestFile({ abs: src, srcRel: 'y.flac', config, store, aliases, readTags: async () => ({ title: 'Roar', artist: 'Katy Perry', album: '', picture: null }) });
+  assert.deepEqual([en.title, en.artist, en.lang], ['Roar', 'Katy Perry', 'en']);
+});
+
 test('ingest without art leaves art null', async () => {
   const { config, store, src } = await env();
   const song = await ingestFile({ abs: src, srcRel: 'x.flac', config, store, readTags: async () => ({ title: 'T', artist: 'A', album: '', picture: null }) });

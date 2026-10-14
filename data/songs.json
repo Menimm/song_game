@@ -16,16 +16,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "Beggin'",
-          "artist": "Måneskin"
+          "title": "Cold Heart",
+          "artist": "Elton John, Dua Lipa"
         },
         {
-          "title": "Wrecking Ball",
-          "artist": "Miley Cyrus"
+          "title": "Feel It Still",
+          "artist": "Portugal. The Man"
         },
         {
-          "title": "A Sky Full of Stars",
-          "artist": "Coldplay"
+          "title": "Blank Space",
+          "artist": "Taylor Swift"
         }
       ]
     },
@@ -45,16 +45,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "I'm Good (Blue)",
-          "artist": "David Guetta, Bebe Rexha"
+          "title": "Born This Way",
+          "artist": "Lady Gaga"
         },
         {
-          "title": "As It Was",
-          "artist": "Harry Styles"
+          "title": "A Sky Full of Stars",
+          "artist": "Coldplay"
         },
         {
-          "title": "Calm Down",
-          "artist": "Rema, Selena Gomez"
+          "title": "TiK ToK",
+          "artist": "Kesha"
         }
       ]
     },
@@ -74,16 +74,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "Party Rock Anthem",
-          "artist": "LMFAO"
-        },
-        {
-          "title": "I'm Good (Blue)",
-          "artist": "David Guetta, Bebe Rexha"
+          "title": "Feel It Still",
+          "artist": "Portugal. The Man"
         },
         {
           "title": "On The Floor",
-          "artist": "Jennifer Lopez"
+          "artist": "Jennifer Lopez, Pitbull"
+        },
+        {
+          "title": "Rehab",
+          "artist": "Amy Winehouse"
         }
       ]
     },
@@ -103,16 +103,16 @@
       "unavailable": false,
       "distractors": [
         {
+          "title": "BREAK MY SOUL",
+          "artist": "Beyoncé"
+        },
+        {
+          "title": "If We Ever Broke Up - Sped Up",
+          "artist": "Mae Stephens, Speed Radio, xxtristanxo"
+        },
+        {
           "title": "Love Again",
           "artist": "Dua Lipa"
-        },
-        {
-          "title": "On The Floor",
-          "artist": "Jennifer Lopez"
-        },
-        {
-          "title": "Fight Song",
-          "artist": "Rachel Platten"
         }
       ]
     },
@@ -132,16 +132,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "Firework",
-          "artist": "Katy Perry"
+          "title": "If We Ever Broke Up - Sped Up",
+          "artist": "Mae Stephens, Speed Radio, xxtristanxo"
         },
         {
-          "title": "We Found Love",
-          "artist": "Rihanna"
+          "title": "CUFF IT",
+          "artist": "Beyoncé"
         },
         {
-          "title": "TiK ToK",
-          "artist": "Kesha"
+          "title": "Just Dance",
+          "artist": "Lady Gaga, Colby O'Donis"
         }
       ]
     },
@@ -161,16 +161,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "Can't Stop the Feeling!",
-          "artist": "Justin Timberlake"
+          "title": "TiK ToK",
+          "artist": "Kesha"
         },
         {
-          "title": "Hips Don't Lie",
-          "artist": "Shakira"
+          "title": "Shake It Off",
+          "artist": "Taylor Swift"
         },
         {
-          "title": "Shallow",
-          "artist": "Lady Gaga"
+          "title": "We Found Love",
+          "artist": "Rihanna, Calvin Harris"
         }
       ]
     },
@@ -190,23 +190,23 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "לב דפוק",
+          "title": "תשע בכיכר",
           "artist": "גזוז"
         },
         {
-          "title": "אמבולנס",
-          "artist": "Noa Kirel, Mergui"
+          "title": "אם אתה גבר",
+          "artist": "נועה קירל"
         },
         {
-          "title": "טיקיטאס",
-          "artist": "נועה קירל"
+          "title": "רוני",
+          "artist": "גזוז"
         }
       ]
     },
     {
       "id": "s_3ecdf7a4",
       "title": "יש לי ציפור קטנה בלב",
-      "artist": "Noa Kirel;נועה קירל",
+      "artist": "נועה קירל",
       "album": "אם הייתי שר לך- שרים יגאל בשן",
       "file": "s_3ecdf7a4.flac",
       "srcRel": "Soulseek/new/אמנים שונים - אם הייתי שר לך- שרים יגאל בשן/5 - יש לי ציפור קטנה בלב.flac",
@@ -219,23 +219,23 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "מיליון דולר",
-          "artist": "Noa Kirel, שחר סאול"
+          "title": "טיקיטאס",
+          "artist": "נועה קירל, סטפן לגר, אריסה"
         },
         {
           "title": "פעמון",
-          "artist": "נועה קירל"
+          "artist": "נועה קירל, איתי גלו"
         },
         {
-          "title": "חללית",
-          "artist": "גזוז"
+          "title": "אמבולנס",
+          "artist": "נועה קירל, מרגי"
         }
       ]
     },
     {
       "id": "s_d94c8043",
       "title": "מיליון דולר",
-      "artist": "Noa Kirel, שחר סאול",
+      "artist": "נועה קירל, שחר סאול",
       "album": "מיליון דולר",
       "file": "s_d94c8043.flac",
       "srcRel": "הלהיטים החמים Deezer Israel Editor FLAC/Noa Kirel/מיליון דולר/Noa Kirel - מיליון דולר.flac",
@@ -248,23 +248,23 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "פעמון",
-          "artist": "נועה קירל"
-        },
-        {
-          "title": "אמבולנס",
-          "artist": "Noa Kirel, Mergui"
-        },
-        {
-          "title": "תשע בכיכר",
+          "title": "כחול ים תיכון",
           "artist": "גזוז"
+        },
+        {
+          "title": "פעמון",
+          "artist": "נועה קירל, איתי גלו"
+        },
+        {
+          "title": "יוניקורן",
+          "artist": "נועה קירל"
         }
       ]
     },
     {
       "id": "s_f5b930ae",
       "title": "אם אתה גבר",
-      "artist": "Noa Kirel",
+      "artist": "נועה קירל",
       "album": "אם אתה גבר",
       "file": "s_f5b930ae.flac",
       "srcRel": "הלהיטים החמים Deezer Israel Editor FLAC/Noa Kirel/אם אתה גבר/Noa Kirel - אם אתה גבר.flac",
@@ -277,15 +277,15 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "יש לי ציפור קטנה בלב",
-          "artist": "Noa Kirel;נועה קירל"
+          "title": "פעמון",
+          "artist": "נועה קירל, איתי גלו"
         },
         {
-          "title": "תשע בכיכר",
-          "artist": "גזוז"
+          "title": "טיקיטאס",
+          "artist": "נועה קירל, סטפן לגר, אריסה"
         },
         {
-          "title": "אמא ודני",
+          "title": "רוני",
           "artist": "גזוז"
         }
       ]
@@ -293,7 +293,7 @@
     {
       "id": "s_de9c337f",
       "title": "אמבולנס",
-      "artist": "Noa Kirel, Mergui",
+      "artist": "נועה קירל, מרגי",
       "album": "אמבולנס",
       "file": "s_de9c337f.flac",
       "srcRel": "הלהיטים החמים Deezer Israel Editor FLAC/Noa Kirel/אמבולנס/Noa Kirel - אמבולנס.flac",
@@ -306,45 +306,45 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "תשע בכיכר",
+          "title": "כחול ים תיכון",
           "artist": "גזוז"
         },
         {
-          "title": "מיליון דולר",
-          "artist": "Noa Kirel, שחר סאול"
+          "title": "רוני",
+          "artist": "גזוז"
         },
         {
-          "title": "טיקיטאס",
-          "artist": "נועה קירל"
+          "title": "אמא ודני",
+          "artist": "גזוז"
         }
       ]
     },
     {
       "id": "s_69e642b6",
-      "title": "Tikitas",
-      "artist": "Noa Kirel, Stephane Legar, Arisa",
+      "title": "טיקיטאס",
+      "artist": "נועה קירל, סטפן לגר, אריסה",
       "album": "Tikitas",
       "file": "s_69e642b6.flac",
       "srcRel": "אוסף להיטים ישראליים FLAC/נועה קירל, סטפן לגר ואריסה - טיקיטאס (Tikitas).flac",
       "art": "jpg",
       "offsetMs": 0,
       "hook": "",
-      "lang": "en",
+      "lang": "he",
       "bpm": null,
       "enabled": true,
       "unavailable": false,
       "distractors": [
         {
-          "title": "TiK ToK",
-          "artist": "Kesha"
+          "title": "לב דפוק",
+          "artist": "גזוז"
         },
         {
-          "title": "Uptown Funk",
-          "artist": "Mark Ronson"
+          "title": "יוניקורן",
+          "artist": "נועה קירל"
         },
         {
-          "title": "Beggin'",
-          "artist": "Måneskin"
+          "title": "מי זאת",
+          "artist": "אנה זק"
         }
       ]
     },
@@ -364,16 +364,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "אם אתה גבר",
-          "artist": "Noa Kirel"
+          "title": "פעמון",
+          "artist": "נועה קירל, איתי גלו"
         },
         {
-          "title": "יש לי ציפור קטנה בלב",
-          "artist": "Noa Kirel;נועה קירל"
+          "title": "טיקיטאס",
+          "artist": "נועה קירל, סטפן לגר, אריסה"
         },
         {
-          "title": "אמא ודני",
-          "artist": "גזוז"
+          "title": "יוניקורן",
+          "artist": "נועה קירל"
         }
       ]
     },
@@ -393,16 +393,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "לב דפוק",
+          "title": "רוני",
           "artist": "גזוז"
         },
         {
-          "title": "Unicorn",
-          "artist": "Noa Kirel"
+          "title": "כחול ים תיכון",
+          "artist": "גזוז"
         },
         {
-          "title": "אם אתה גבר",
-          "artist": "Noa Kirel"
+          "title": "טיקיטאס",
+          "artist": "נועה קירל, סטפן לגר, אריסה"
         }
       ]
     },
@@ -422,12 +422,12 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "פנתרה",
-          "artist": "נועה קירל"
+          "title": "פעמון",
+          "artist": "נועה קירל, איתי גלו"
         },
         {
-          "title": "Unicorn",
-          "artist": "Noa Kirel"
+          "title": "יש לי ציפור קטנה בלב",
+          "artist": "נועה קירל"
         },
         {
           "title": "מי זאת",
@@ -451,16 +451,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "Uptown Funk",
-          "artist": "Mark Ronson"
+          "title": "Roar",
+          "artist": "Katy Perry"
         },
         {
-          "title": "Rehab",
-          "artist": "Amy Winehouse"
+          "title": "Blinding Lights",
+          "artist": "The Weeknd"
         },
         {
-          "title": "Beggin'",
-          "artist": "Måneskin"
+          "title": "Shallow",
+          "artist": "Lady Gaga, Bradley Cooper"
         }
       ]
     },
@@ -480,16 +480,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "Whenever, Wherever",
-          "artist": "Shakira"
+          "title": "We Found Love",
+          "artist": "Rihanna, Calvin Harris"
         },
         {
-          "title": "Uptown Funk (feat. Bruno Mars)",
-          "artist": "Mark Ronson, Bruno Mars"
+          "title": "Flowers",
+          "artist": "Miley Cyrus"
         },
         {
-          "title": "La Tortura (feat. Alejandro Sanz)",
-          "artist": "Shakira, Alejandro Sanz"
+          "title": "Blinding Lights",
+          "artist": "The Weeknd"
         }
       ]
     },
@@ -509,16 +509,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "CAN'T STOP THE FEELING! (from DreamWorks Animation's \"TROLLS\")",
-          "artist": "Justin Timberlake"
+          "title": "Levitating",
+          "artist": "Dua Lipa"
         },
         {
-          "title": "Rehab",
-          "artist": "Amy Winehouse"
+          "title": "Bad Romance",
+          "artist": "Lady Gaga"
         },
         {
-          "title": "Get Lucky (Radio Edit) [feat. Pharrell Williams and Nile Rodgers]",
-          "artist": "Daft Punk, Pharrell Williams, Nile Rodgers"
+          "title": "I'm Good (Blue)",
+          "artist": "David Guetta, Bebe Rexha"
         }
       ]
     },
@@ -538,16 +538,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "Whenever, Wherever",
-          "artist": "Shakira"
+          "title": "Blue (Da Ba Dee)",
+          "artist": "I'm Blue"
         },
         {
-          "title": "About Damn Time",
-          "artist": "Lizzo"
+          "title": "Single Ladies (Put a Ring on It)",
+          "artist": "Beyoncé"
         },
         {
-          "title": "Watermelon Sugar",
-          "artist": "Harry Styles"
+          "title": "Blinding Lights",
+          "artist": "The Weeknd"
         }
       ]
     },
@@ -567,16 +567,16 @@
       "unavailable": false,
       "distractors": [
         {
-          "title": "Estoy Aquí",
-          "artist": "Shakira"
+          "title": "Back to You (feat. Bebe Rexha & Digital Farm Animals)",
+          "artist": "Louis Tomlinson, Bebe Rexha, Digital Farm Animals"
         },
         {
-          "title": "Sol, Playa Y Arena",
-          "artist": "Reywil Alexander, Norci Morales, Stidlmusic"
+          "title": "Shake It Off",
+          "artist": "Taylor Swift"
         },
         {
-          "title": "Blinding Lights",
-          "artist": "The Weeknd"
+          "title": "Love Again",
+          "artist": "Dua Lipa"
         }
       ]
     }

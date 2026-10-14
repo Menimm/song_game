@@ -192,6 +192,9 @@ function spotifyPanel() {
 
 const toolsCard = el('div', { class: 'card' }, el('div', { class: 'row', style: 'flex-wrap:wrap' },
   el('button', { class: 'btn sun', text: '✨ השלם תשובות שגויות לכל השירים', onclick: async () => { await api('/suggest-all', { method: 'POST', body: {} }); await load(); } }),
+  el('button', { class: 'btn', text: '🔤 שמות בעברית לשירים בעברית', onclick: async (e) => {
+    const { updated } = await api('/hebrewize', { method: 'POST', body: {} }); e.target.textContent = `עודכנו ${updated} שירים`; await load();
+  } }),
   el('button', { class: 'btn alt', text: '🥁 חשב BPM לשירים שחסר להם', onclick: async (e) => {
     const b = e.target; b.disabled = true;
     for (const s of songs.filter((x) => !x.bpm)) { b.textContent = `מחשב ${s.title}…`; await afterAdd(s); }

@@ -29,7 +29,7 @@ test('search, add (copies the file), edit, reorder and delete', async () => {
   const add = await call('/add', { method: 'POST', body: JSON.stringify({ rel: found[0].rel }) });
   assert.equal(add.status, 201);
   const song = await add.json();
-  assert.equal(song.title, 'Nine'); assert.equal(song.artist, 'Gazoz');
+  assert.equal(song.title, 'Nine'); assert.equal(song.artist, 'גזוז'); assert.equal(song.lang, 'he');   // Israeli artist -> Hebrew name
   assert.equal(await fs.readFile(path.join(config.songsDir, song.file), 'utf8'), 'audio-bytes');
 
   const again = await (await call('/add', { method: 'POST', body: JSON.stringify({ rel: found[0].rel }) })).json();
@@ -100,6 +100,23 @@ test('suggest returns three wrong answers that are not the song itself; suggest-
   const lib = (await (await call('/library')).json()).songs;
   assert.equal(lib[0].distractors[0].title, 'Keep Me');
   assert.ok(lib.every((x) => x.distractors.length === 3));
+  await app.close();
+});
+
+test('hebrewize shows Hebrew songs with Hebrew letters (incl. wrong answers); English songs stay Latin', async () => {
+  const { app, call } = await boot();
+  const he = await app.store.add({ title: 'Tikitas', artist: 'Noa Kirel, Stephane Legar, Arisa', file: 'a.mp3', lang: 'en', distractors: [{ title: 'Unicorn', artist: 'Noa Kirel' }] });
+  const en = await app.store.add({ title: 'Roar', artist: 'Katy Perry', file: 'b.mp3' });
+  const r = await (await call('/hebrewize', { method: 'POST', body: '{}' })).json();
+  assert.equal(r.updated, 1);
+  const lib = (await (await call('/library')).json()).songs;
+  const h = lib.find((s) => s.id === he.id);
+  assert.deepEqual([h.title, h.artist, h.lang], ['טיקיטאס', 'נועה קירל, סטפן לגר, אריסה', 'he']);
+  assert.deepEqual(h.distractors, [{ title: 'יוניקורן', artist: 'נועה קירל' }]);
+  assert.deepEqual([lib.find((s) => s.id === en.id).title, lib.find((s) => s.id === en.id).artist], ['Roar', 'Katy Perry']);
+  const s = await (await call(`/song/${he.id}/suggest`)).json();           // wrong answers for a Hebrew song are Hebrew-named
+  assert.equal(s.distractors.length, 3);
+  assert.ok(s.distractors.every((d) => /[֐-׿]/.test(d.title) && /[֐-׿]/.test(d.artist)), JSON.stringify(s.distractors));
   await app.close();
 });
 

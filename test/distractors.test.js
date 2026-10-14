@@ -31,6 +31,15 @@ test('Hebrew songs get Hebrew wrong answers first', () => {
   assert.deepEqual(d.map((x) => x.title).sort(), ['חללית', 'רוני'].sort());
 });
 
+test('a version of the same song (extra text in brackets) is never offered as a wrong answer', () => {
+  const s = { title: "Hips Don't Lie (feat. Wyclef Jean)", artist: 'Shakira', lang: 'en' };
+  const d = suggestDistractors(s, [
+    { title: "Hips Don't Lie", artist: 'Shakira', lang: 'en' }, { title: 'Roar', artist: 'K', lang: 'en' },
+    { title: 'Firework', artist: 'K', lang: 'en' }, { title: 'Perfect', artist: 'E', lang: 'en' },
+  ], { rng: () => 0 });
+  assert.deepEqual(d.map((x) => x.title).sort(), ['Firework', 'Perfect', 'Roar']);
+});
+
 test('small pools return what exists', () => {
   assert.equal(suggestDistractors(song, [{ title: 'Roar', artist: 'K', lang: 'en' }]).length, 1);
   assert.deepEqual(suggestDistractors(song, []), []);
