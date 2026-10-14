@@ -1,1 +1,439 @@
-{ "songs": [] }
+{
+  "songs": [
+    {
+      "id": "s_5ec9194f",
+      "title": "Shake It Off",
+      "artist": "Taylor Swift",
+      "album": "1989 (Deluxe Edition)",
+      "file": "s_5ec9194f.flac",
+      "srcRel": "TIDAL DL/Album/Taylor Swift/[M] 1989 (Deluxe Edition) [121444594] [2014]/06 - Taylor Swift - Shake It Off.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "Beggin'",
+          "artist": "Måneskin"
+        },
+        {
+          "title": "Wrecking Ball",
+          "artist": "Miley Cyrus"
+        },
+        {
+          "title": "A Sky Full of Stars",
+          "artist": "Coldplay"
+        }
+      ]
+    },
+    {
+      "id": "s_b9076017",
+      "title": "Flowers",
+      "artist": "Miley Cyrus",
+      "album": "Flowers",
+      "file": "s_b9076017.flac",
+      "srcRel": "TIDAL DL/Playlist/Female Icons - TIDAL Masters/95 - Miley Cyrus - Flowers.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "I'm Good (Blue)",
+          "artist": "David Guetta, Bebe Rexha"
+        },
+        {
+          "title": "As It Was",
+          "artist": "Harry Styles"
+        },
+        {
+          "title": "Calm Down",
+          "artist": "Rema, Selena Gomez"
+        }
+      ]
+    },
+    {
+      "id": "s_b8d75a6b",
+      "title": "Roar",
+      "artist": "Katy Perry",
+      "album": "PRISM",
+      "file": "s_b8d75a6b.flac",
+      "srcRel": "Various Artists - Hi-Res Masters Girl Power [24Bit-FLAC] FLAC [PMEDIA] ⭐️/80. Katy Perry - Roar.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "Party Rock Anthem",
+          "artist": "LMFAO"
+        },
+        {
+          "title": "I'm Good (Blue)",
+          "artist": "David Guetta, Bebe Rexha"
+        },
+        {
+          "title": "On The Floor",
+          "artist": "Jennifer Lopez"
+        }
+      ]
+    },
+    {
+      "id": "s_32c889d8",
+      "title": "Watermelon Sugar",
+      "artist": "Harry Styles",
+      "album": "Fine Line",
+      "file": "s_32c889d8.flac",
+      "srcRel": "הלהיטים החמים Deezer Israel Editor FLAC/Harry Styles/Fine Line/Harry Styles - Watermelon Sugar.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "Love Again",
+          "artist": "Dua Lipa"
+        },
+        {
+          "title": "On The Floor",
+          "artist": "Jennifer Lopez"
+        },
+        {
+          "title": "Fight Song",
+          "artist": "Rachel Platten"
+        }
+      ]
+    },
+    {
+      "id": "s_9647f1ae",
+      "title": "Don't Start Now",
+      "artist": "Dua Lipa",
+      "album": "Don't Start Now",
+      "file": "s_9647f1ae.flac",
+      "srcRel": "TIDAL DL/Playlist/Female Icons - TIDAL Masters/23 - Dua Lipa - Don't Start Now.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "Firework",
+          "artist": "Katy Perry"
+        },
+        {
+          "title": "We Found Love",
+          "artist": "Rihanna"
+        },
+        {
+          "title": "TiK ToK",
+          "artist": "Kesha"
+        }
+      ]
+    },
+    {
+      "id": "s_4ebdd47d",
+      "title": "Hips Don't Lie (feat. Wyclef Jean)",
+      "artist": "Shakira",
+      "album": "Oral Fixation, Vol. 2 (Expanded Edition)",
+      "file": "s_4ebdd47d.flac",
+      "srcRel": "TIDAL DL/Playlist/Female Icons - TIDAL Masters/42 - Shakira, Wyclef Jean - Hips Don't Lie (feat. Wyclef Jean).flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "Can't Stop the Feeling!",
+          "artist": "Justin Timberlake"
+        },
+        {
+          "title": "Hips Don't Lie",
+          "artist": "Shakira"
+        },
+        {
+          "title": "Shallow",
+          "artist": "Lady Gaga"
+        }
+      ]
+    },
+    {
+      "id": "s_333ee103",
+      "title": "הרקדן האוטומטי",
+      "artist": "צביקה פיק",
+      "album": "WwW.DDL-IL.NeT",
+      "file": "s_333ee103.mp3",
+      "srcRel": "Osef_Shirim_Yisraelim/אוסף שירים ישראליים/צביקה פיק - הרקדן האוטומטי.mp3",
+      "art": null,
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "he",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "לב דפוק",
+          "artist": "גזוז"
+        },
+        {
+          "title": "אמבולנס",
+          "artist": "Noa Kirel, Mergui"
+        },
+        {
+          "title": "טיקיטאס",
+          "artist": "נועה קירל"
+        }
+      ]
+    },
+    {
+      "id": "s_3ecdf7a4",
+      "title": "יש לי ציפור קטנה בלב",
+      "artist": "Noa Kirel;נועה קירל",
+      "album": "אם הייתי שר לך- שרים יגאל בשן",
+      "file": "s_3ecdf7a4.flac",
+      "srcRel": "Soulseek/new/אמנים שונים - אם הייתי שר לך- שרים יגאל בשן/5 - יש לי ציפור קטנה בלב.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "he",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "מיליון דולר",
+          "artist": "Noa Kirel, שחר סאול"
+        },
+        {
+          "title": "פעמון",
+          "artist": "נועה קירל"
+        },
+        {
+          "title": "חללית",
+          "artist": "גזוז"
+        }
+      ]
+    },
+    {
+      "id": "s_d94c8043",
+      "title": "מיליון דולר",
+      "artist": "Noa Kirel, שחר סאול",
+      "album": "מיליון דולר",
+      "file": "s_d94c8043.flac",
+      "srcRel": "הלהיטים החמים Deezer Israel Editor FLAC/Noa Kirel/מיליון דולר/Noa Kirel - מיליון דולר.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "he",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "פעמון",
+          "artist": "נועה קירל"
+        },
+        {
+          "title": "אמבולנס",
+          "artist": "Noa Kirel, Mergui"
+        },
+        {
+          "title": "תשע בכיכר",
+          "artist": "גזוז"
+        }
+      ]
+    },
+    {
+      "id": "s_f5b930ae",
+      "title": "אם אתה גבר",
+      "artist": "Noa Kirel",
+      "album": "אם אתה גבר",
+      "file": "s_f5b930ae.flac",
+      "srcRel": "הלהיטים החמים Deezer Israel Editor FLAC/Noa Kirel/אם אתה גבר/Noa Kirel - אם אתה גבר.flac",
+      "art": null,
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "he",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "יש לי ציפור קטנה בלב",
+          "artist": "Noa Kirel;נועה קירל"
+        },
+        {
+          "title": "תשע בכיכר",
+          "artist": "גזוז"
+        },
+        {
+          "title": "אמא ודני",
+          "artist": "גזוז"
+        }
+      ]
+    },
+    {
+      "id": "s_de9c337f",
+      "title": "אמבולנס",
+      "artist": "Noa Kirel, Mergui",
+      "album": "אמבולנס",
+      "file": "s_de9c337f.flac",
+      "srcRel": "הלהיטים החמים Deezer Israel Editor FLAC/Noa Kirel/אמבולנס/Noa Kirel - אמבולנס.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "he",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "תשע בכיכר",
+          "artist": "גזוז"
+        },
+        {
+          "title": "מיליון דולר",
+          "artist": "Noa Kirel, שחר סאול"
+        },
+        {
+          "title": "טיקיטאס",
+          "artist": "נועה קירל"
+        }
+      ]
+    },
+    {
+      "id": "s_69e642b6",
+      "title": "Tikitas",
+      "artist": "Noa Kirel, Stephane Legar, Arisa",
+      "album": "Tikitas",
+      "file": "s_69e642b6.flac",
+      "srcRel": "אוסף להיטים ישראליים FLAC/נועה קירל, סטפן לגר ואריסה - טיקיטאס (Tikitas).flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "TiK ToK",
+          "artist": "Kesha"
+        },
+        {
+          "title": "Uptown Funk",
+          "artist": "Mark Ronson"
+        },
+        {
+          "title": "Beggin'",
+          "artist": "Måneskin"
+        }
+      ]
+    },
+    {
+      "id": "s_e02e0dff",
+      "title": "חללית",
+      "artist": "גזוז",
+      "album": "20 הלהיטים",
+      "file": "s_e02e0dff.flac",
+      "srcRel": "גזוז - 1990 - 20 הלהיטים/11 - חללית .flac",
+      "art": null,
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "he",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "אם אתה גבר",
+          "artist": "Noa Kirel"
+        },
+        {
+          "title": "יש לי ציפור קטנה בלב",
+          "artist": "Noa Kirel;נועה קירל"
+        },
+        {
+          "title": "אמא ודני",
+          "artist": "גזוז"
+        }
+      ]
+    },
+    {
+      "id": "s_c6d5f4ef",
+      "title": "תשע בכיכר",
+      "artist": "גזוז",
+      "album": "20 הלהיטים",
+      "file": "s_c6d5f4ef.flac",
+      "srcRel": "גזוז - 1990 - 20 הלהיטים/01 - תשע בכיכר .flac",
+      "art": null,
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "he",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "לב דפוק",
+          "artist": "גזוז"
+        },
+        {
+          "title": "Unicorn",
+          "artist": "Noa Kirel"
+        },
+        {
+          "title": "אם אתה גבר",
+          "artist": "Noa Kirel"
+        }
+      ]
+    },
+    {
+      "id": "s_440a7007",
+      "title": "רוני",
+      "artist": "גזוז",
+      "album": "20 הלהיטים",
+      "file": "s_440a7007.flac",
+      "srcRel": "גזוז - 1990 - 20 הלהיטים/18 - רוני .flac",
+      "art": null,
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "he",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "פנתרה",
+          "artist": "נועה קירל"
+        },
+        {
+          "title": "Unicorn",
+          "artist": "Noa Kirel"
+        },
+        {
+          "title": "מי זאת",
+          "artist": "אנה זק"
+        }
+      ]
+    }
+  ]
+}

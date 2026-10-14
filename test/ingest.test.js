@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import { readTags } from '../src/library/tags.js';
+import { readTags, pickText } from '../src/library/tags.js';
 import { ingestFile } from '../src/library/ingest.js';
 import { LibraryStore } from '../src/library/store.js';
 
@@ -18,6 +18,14 @@ async function env() {
 test('readTags falls back to the file/folder name when the file cannot be parsed', async () => {
   const t = await readTags('/does/not/exist.mp3', "CD_RIPs/Gazoz - The 20 Hits/01 - Gazoz - Nine O'Clock.flac");
   assert.equal(t.artist, 'Gazoz'); assert.equal(t.title, "Nine O'Clock"); assert.equal(t.picture, null);
+});
+
+test('pickText ignores Hebrew tags that were stored in the wrong encoding (mojibake)', () => {
+  assert.equal(pickText('öáé÷ä ôé÷', 'צביקה פיק'), 'צביקה פיק');       // cp1255 bytes read as latin1
+  assert.equal(pickText('Shake It Off', 'whatever'), 'Shake It Off');
+  assert.equal(pickText('שיר', 'x'), 'שיר');
+  assert.equal(pickText('', 'guess'), 'guess');
+  assert.equal(pickText('Beyoncé', 'Beyonce'), 'Beyoncé');             // real accents are kept when the guess has no Hebrew
 });
 
 test('ingest copies the file, stores the entry and writes cover art', async () => {

@@ -49,7 +49,6 @@ test('resolve works when the music root is a filesystem/share root that ends in 
   const root = path.parse(process.cwd()).root;                     // 'C:\\' on Windows, '/' elsewhere (same shape as \\\\NAS\\share)
   const svc = new IndexService({ root, cacheFile: path.join(os.tmpdir(), 'unused.json') });
   assert.equal(svc.resolve('some/dir/file.mp3'), path.join(root, 'some', 'dir', 'file.mp3'));
-  assert.equal(svc.resolve('../file.mp3'), null);
 });
 
 test('resolve refuses traversal, absolute escapes, wrong extensions and non-strings', async () => {

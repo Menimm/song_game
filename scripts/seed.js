@@ -8,7 +8,7 @@ const SEED = [
   'Taylor Swift Shake It Off', 'Miley Cyrus Flowers', 'Katy Perry Roar', 'Harry Styles Watermelon Sugar',
   "Dua Lipa Don't Start Now", "Shakira Hips Don't Lie",
   'הרקדן האוטומטי', 'יש לי ציפור קטנה בלב', 'נועה קירל מיליון דולר', 'נועה קירל אם אתה גבר', 'נועה קירל אמבולנס', 'טיקיטאס',
-  'גזוז חללית', 'גזוז תשע בכיכר', 'גזוז רוני',
+  'גזוז 20 הלהיטים חללית', 'גזוז 20 הלהיטים תשע בכיכר', 'גזוז 20 הלהיטים רוני',      // the Gazoz "20 Hits" album, not covers
 ];
 
 const app = await createApp({ config });
