@@ -3,7 +3,7 @@
 ## One-time setup (do this before Saturday, not on Saturday)
 1. Install tools: `brew install node cloudflared` (and Google Chrome).
 2. Mount the music share: Finder → Go → Connect to Server → `smb://BIGBOX2/music`. It appears as `/Volumes/music`.
-3. Copy the whole project folder to the Mac **including `songs/` and `data/`** (they are not in git). In the folder: `npm install`.
+3. Get the project onto the Mac: `git clone <repo-url> identifySongs && cd identifySongs && npm install`. The song audio is not in git: with the music share mounted run **`npm run restore`** (re-copies every song listed in `data/songs.json`), then press **רענון אינדקס** once in `/manage`. (Alternative: copy the `songs/` folder over from the other computer.)
 4. First start: `npm start`. macOS asks "Allow node to accept incoming connections?" → **Allow**.
 5. Keep the Mac awake during the party: run `caffeinate -d` in a second Terminal tab.
 
