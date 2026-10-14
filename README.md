@@ -82,6 +82,7 @@ For each song you can set a **start offset** (skip a silent intro), a small opti
 ## Running the game
 
 **Operator buttons:** ▶ pick a song · 🎲 random · ⏸ pause / ▶ continue · 🔁 replay the same clip · ➕ longer clip · 👀 reveal now · ⏭ skip · ➡ next (stops the music) · ±10 points / ✖ remove per player · 🤖 practice bots.
+**"ספירה לאחור (שניות)"** = the get-ready countdown before each song (default 3 s, 1–10; takes effect on the next round).
 **"ניסיונות (שלבים)"** = how many clip lengths are tried before the answer is revealed (1–5). Change it right before pressing ▶ for a per-round override.
 **After the reveal** the full song plays; the bar at the bottom lets you pause and drag to any point.
 

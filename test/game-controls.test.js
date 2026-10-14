@@ -39,7 +39,7 @@ test('pausing the pre-round countdown also freezes it', () => {
   const game = new Game({ config, getSongs: () => SONGS, timers, rng: () => 0.5 });
   game.startRound({ songId: 's0' }); game.hostReady();
   timers.advance(2000); game.pause(); timers.advance(99999);
-  assert.equal(game.snapshot('tv').timer.remainingMs, 3000);
+  assert.equal(game.snapshot('tv').timer.remainingMs, config.preRoundMs - 2000);
   assert.equal(game.snapshot('tv').options, null);                   // choices must not appear before any audio has played
   game.resume();
   assert.equal(game.phase, 'countdown');
@@ -110,4 +110,20 @@ test('setMaxSteps clamps to the ladder', () => {
   const { game } = setup();
   game.setMaxSteps(99); assert.equal(game.maxSteps, 5);
   game.setMaxSteps(0); assert.equal(game.maxSteps, 1);
+});
+
+test('countdown length defaults to 3s, is settable (1-10s) and drives the next round', () => {
+  const timers = new FakeTimers();
+  const game = new Game({ config, getSongs: () => SONGS, timers, rng: () => 0.5 });
+  const sfx = []; game.on('sfx', (...a) => sfx.push(a));
+  assert.equal(config.preRoundMs, 3000);
+  assert.equal(game.snapshot('host').preRoundSecs, 3);
+  game.setPreRoundSecs(99); assert.equal(game.snapshot('host').preRoundSecs, 10);
+  game.setPreRoundSecs(0); assert.equal(game.snapshot('host').preRoundSecs, 1);
+  game.setPreRoundSecs(2);
+  game.startRound({ songId: 's0' }); game.hostReady();
+  assert.equal(game.snapshot('tv').timer.remainingMs, 2000);
+  assert.deepEqual(sfx.at(-1), ['countdown', 2]);
+  timers.advance(2000);
+  assert.equal(game.phase, 'awaiting_audio');
 });

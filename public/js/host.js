@@ -41,7 +41,7 @@ async function handle(m) {
     case 'resume': audio.resume(); break;
     case 'full': audio.playFull(m.offsetMs); break;
     case 'stop': audio.release(); break;
-    case 'sfx': sfx(audio.ctx, m.name); break;
+    case 'sfx': sfx(audio.ctx, m.name, m.arg); break;
     case 'error': toast = ({ busy: 'יש סיבוב פעיל', no_song: 'אין שיר', not_enough_options: 'חסרות תשובות שגויות לשיר הזה' })[m.e] || m.e; render(); break;
     default: break;
   }
@@ -67,6 +67,9 @@ function controls(s) {
       el('select', { onchange: (e) => cmd('setMaxSteps', { n: Number(e.target.value) }) },
         [1, 2, 3, 4, 5].map((n) => el('option', { value: n, selected: n === s.maxSteps, text: n }))),
       toast ? el('span', { class: 'err', text: toast }) : null),
+    el('div', { class: 'row' }, el('span', { text: 'ספירה לאחור (שניות):' }),
+      el('select', { onchange: (e) => cmd('setPreRoundSecs', { n: Number(e.target.value) }) },
+        [1, 2, 3, 4, 5, 6, 8, 10].map((n) => el('option', { value: n, selected: n === s.preRoundSecs, text: n })))),
     s.phase !== 'idle' && s.phase !== 'preloading' && !audio.buffer ? el('div', { class: 'err', text: '⚠ אין שמע טעון במסך הזה — לחצו "דלג" והתחילו שיר מחדש' }) : null,
     last ? el('div', { class: 'err', text: last.reason === 'timeout' || last.reason === 'locked'
       ? '⚠ השיר לא נטען בזמן — בדקו שלחצתם "הפעלת סאונד" במסך המנחה הזה (השיר נשאר ברשימה)'

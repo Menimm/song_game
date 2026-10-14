@@ -19,7 +19,7 @@ export const config = {
   points: [100, 80, 60, 40, 20],
   wrongPenalty: 10,
   maxSteps: 5,
-  preRoundMs: 5000,
+  preRoundMs: 3000,
   answerMs: 8000,
   preloadTimeoutMs: 20000,
   ackTimeoutMs: 3000,

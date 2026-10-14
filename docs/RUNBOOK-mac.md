@@ -25,7 +25,7 @@ The terminal prints a QR code, the room code, and the URLs. If it says "No publi
 First time on a new machine: press **רענון אינדקס** once (1–2 minutes) so the NAS search works.
 
 ## Operator quick reference (host page)
-▶ pick a song / 🎲 random · ⏸ pause–▶ continue · 🔁 replay the same clip · ➕ longer clip · 👀 reveal now · ⏭ skip song · ➡ next (stops the music) · "ניסיונות" = how many clip lengths before the answer is revealed (change it right before pressing ▶ for a per-round override) · ±10 points and ✖ kick per player · 🤖 bots for practice.
+▶ pick a song / 🎲 random · ⏸ pause–▶ continue · 🔁 replay the same clip · ➕ longer clip · 👀 reveal now · ⏭ skip song · ➡ next (stops the music) · "ניסיונות" = how many clip lengths before the answer is revealed (change it right before pressing ▶ for a per-round override) · "ספירה לאחור" = seconds of get-ready countdown (default 3) · ±10 points and ✖ kick per player · 🤖 bots for practice.
 **Bottom player bar:** after the reveal the full song plays; use ⏸/▶ and drag the slider to jump anywhere.
 
 ## If something goes wrong

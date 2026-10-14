@@ -24,7 +24,7 @@ export function attachHub({ server, game }) {
   const push = (c) => { if (c.role) send(c.ws, { t: 'state', s: game.snapshot(c.role, c.playerId) }); };
   const onChange = () => clients.forEach(push);
   const onHost = (m) => { if (audioHost) send(audioHost.ws, m); };
-  const onSfx = (name) => { if (audioHost) send(audioHost.ws, { t: 'sfx', name }); };
+  const onSfx = (name, arg) => { if (audioHost) send(audioHost.ws, arg == null ? { t: 'sfx', name } : { t: 'sfx', name, arg }); };
   game.on('change', onChange); game.on('host', onHost); game.on('sfx', onSfx);
 
   function hello(c, m) {
@@ -55,6 +55,7 @@ export function attachHub({ server, game }) {
       case 'skip': game.skip(); break;
       case 'next': game.next(); break;
       case 'setMaxSteps': game.setMaxSteps(a.n); break;
+      case 'setPreRoundSecs': game.setPreRoundSecs(a.n); break;
       case 'adjust': game.adjust(String(a.id), Number(a.delta) || 0); break;
       case 'kick': game.kick(String(a.id)); break;
       case 'audioReady': audioHost = c; game.audioRejoined(); break;

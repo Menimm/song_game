@@ -93,6 +93,7 @@ export class Game extends EventEmitter {
     this.played = new Set();
     this.notices = [];
     this.maxSteps = config.maxSteps;
+    this.preRoundMs = config.preRoundMs;
     this.pausedFrom = null;
     this.timer = new PausableTimer(timers);
     this.ackTimer = new PausableTimer(timers);
@@ -137,6 +138,7 @@ export class Game extends EventEmitter {
       phase: this.phase,
       code: this.code,
       maxSteps: r ? r.maxSteps : this.maxSteps,
+      preRoundSecs: Math.round(this.preRoundMs / 1000),
       step: r && r.step >= 0 ? r.step : null,
       ladderMs: this.config.ladderMs,
       timer: this.timer.active()
@@ -203,8 +205,8 @@ export class Game extends EventEmitter {
     if (this.phase !== 'preloading') return;
     if (songId && songId !== this.round.song.id) return;     // stale answer from an abandoned round
     this.phase = 'countdown';
-    this.timer.start(this.config.preRoundMs, () => this.beginStep(0));
-    this.emit('sfx', 'countdown');
+    this.timer.start(this.preRoundMs, () => this.beginStep(0));
+    this.emit('sfx', 'countdown', Math.round(this.preRoundMs / 1000));
     this.changed();
   }
 
@@ -352,6 +354,11 @@ export class Game extends EventEmitter {
     this.emit('host', { t: 'stop' });
     this.phase = 'idle';
     this.round = null;
+    this.changed();
+  }
+
+  setPreRoundSecs(n) {
+    this.preRoundMs = Math.min(10, Math.max(1, Math.floor(Number(n) || 1))) * 1000;
     this.changed();
   }
 

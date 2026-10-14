@@ -1,4 +1,4 @@
-export function sfx(ctx, name) {
+export function sfx(ctx, name, arg) {
   if (!ctx || ctx.state !== 'running') return;
   const t0 = ctx.currentTime;
   const tone = (f, at, dur, type = 'sine', vol = 0.22) => {
@@ -11,7 +11,7 @@ export function sfx(ctx, name) {
     o.start(t0 + at); o.stop(t0 + at + dur + 0.03);
   };
   switch (name) {
-    case 'countdown': [0, 1, 2, 3].forEach((i) => tone(520, i, 0.18, 'square', 0.1)); tone(1040, 4, 0.35, 'square', 0.12); break;
+    case 'countdown': { const n = Math.max(1, Math.round(arg) || 3); for (let i = 0; i < n - 1; i++) tone(520, i, 0.18, 'square', 0.1); tone(1040, n - 1, 0.35, 'square', 0.12); break; }
     case 'step': tone(880, 0, 0.08, 'sine', 0.18); break;
     case 'wrong': tone(140, 0, 0.35, 'sawtooth', 0.2); break;
     case 'next': tone(440, 0, 0.12); tone(660, 0.12, 0.16); break;
