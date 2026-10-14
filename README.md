@@ -62,6 +62,13 @@ npm start -- --no-tunnel       # home Wi-Fi only (no cloudflared)
 
 `MUSIC_DIR` defaults to `/Volumes/music` on macOS and `\\BIGBOX2\music` on Windows (edit `config.js` for your own server).
 
+**If the share mounts under a different name** (macOS adds `-1`, `-2`… when a name is already taken — check with `ls /Volumes`), tell every command where it is — `npm start`, `npm run restore`, `npm run seed` all read it:
+
+```bash
+export MUSIC_DIR="/Volumes/music-1"     # for this Terminal window
+npm run restore && npm start
+```
+
 ## Getting the songs
 
 `data/songs.json` lists the songs; the audio files live in `songs/` (git-ignored — they are copyrighted).

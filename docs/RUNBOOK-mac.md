@@ -35,6 +35,7 @@ First time on a new machine: press **רענון אינדקס** once (1–2 minut
 | "השיר לא נטען" notice, song removed | The file is missing/corrupt. In `/manage` fix or re-add it. |
 | Phones can't open the link | Check the `Phones:` line in the terminal. "home network only" → phone must be on the home Wi-Fi. Restart `npm start` for a new tunnel URL. |
 | A girl is disconnected | She reopens the link; her score and name come back. |
+| Search/restore finds nothing, or `npm run restore` says "Could not restore" | The share isn't mounted, or it mounted under another name. Run `ls /Volumes`, then `export MUSIC_DIR="/Volumes/<the-name>"` in the Terminal and retry `npm run restore` / `npm start`. |
 | Everything stuck | Ctrl+C, `npm start`, reload `/host` and `/tv`. Scores reset on restart. |
 
 ## Rehearsal script (do it twice, with 4 players)
