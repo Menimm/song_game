@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { randomInt } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
@@ -13,7 +14,7 @@ export const config = {
   musicDir: process.env.MUSIC_DIR || defaultMusic,
   songsDir: path.join(rootDir, 'songs'),
   dataDir: path.join(rootDir, 'data'),
-  pin: process.env.MANAGE_PIN || String(1000 + Math.floor(Math.random() * 9000)),
+  pin: process.env.MANAGE_PIN || String(randomInt(1000, 10000)),
   ladderMs: [1000, 2000, 4000, 8000, 15000],
   points: [100, 80, 60, 40, 20],
   wrongPenalty: 10,
