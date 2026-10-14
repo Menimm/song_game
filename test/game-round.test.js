@@ -128,14 +128,47 @@ test('random pick avoids repeats until the pool is used up', () => {
   assert.equal(seen.size, SONGS.length);
 });
 
-test('preload timeout returns to idle with a notice and a song_unavailable event', () => {
+test('preload timeout returns to idle with a notice but does NOT remove the song from the game', () => {
   const ctx = setup(); const { game, timers } = ctx;
   const events = []; game.on('song_unavailable', (e) => events.push(e));
   game.startRound({ songId: 's0' });
   timers.advance(config.preloadTimeoutMs);
   assert.equal(game.phase, 'idle');
-  assert.deepEqual(events, [{ songId: 's0', reason: 'timeout' }]);
-  assert.equal(game.snapshot('host').notices.at(-1).songId, 's0');
+  assert.deepEqual(events, []);                       // no audio host / slow decode is not the song's fault
+  assert.equal(game.snapshot('host').notices.at(-1).reason, 'timeout');
+});
+
+test('a real file failure (missing / undecodable) flags the song unavailable', () => {
+  const { game } = setup();
+  const events = []; game.on('song_unavailable', (e) => events.push(e));
+  game.startRound({ songId: 's0' });
+  game.preloadFailed('HTTP 404', 's0');
+  assert.deepEqual(events, [{ songId: 's0', reason: 'HTTP 404' }]);
+  assert.equal(game.phase, 'idle');
+});
+
+test('a late answer about a previous round\'s song is ignored', () => {
+  const { game } = setup();
+  game.startRound({ songId: 's1' });
+  game.hostReady('s0');                               // stale: belongs to an earlier round
+  assert.equal(game.phase, 'preloading');
+  game.preloadFailed('HTTP 404', 's0');
+  assert.equal(game.phase, 'preloading');
+  game.hostReady('s1');
+  assert.equal(game.phase, 'countdown');
+});
+
+test('a host page that (re)connects mid-round is told to reload the current song', () => {
+  const { game, timers, host } = setup();
+  game.audioRejoined();
+  assert.equal(host.filter((m) => m.t === 'preload').length, 0);              // idle: nothing to do
+  game.startRound({ songId: 's0' }); game.hostReady('s0'); timers.advance(config.preRoundMs); game.stepStarted();
+  host.length = 0;
+  game.audioRejoined();
+  assert.deepEqual(host, [{ t: 'preload', song: { id: 's0', file: 's0.mp3', offsetMs: 500 }, resync: true }]);
+  game.skip(); game.startRound({ songId: 's2' }); host.length = 0;
+  game.audioRejoined();
+  assert.deepEqual(host, [{ t: 'preload', song: { id: 's2', file: 's2.mp3', offsetMs: 500 }, resync: false }]);   // still preloading: a normal preload
 });
 
 test('not enough distinct options refuses to start', () => {

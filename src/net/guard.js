@@ -19,6 +19,12 @@ export function isLocalRequest(req) {
   return isPrivateAddress(req.socket.remoteAddress);
 }
 
+// The operator page runs on this computer; a phone on the LAN must not be able to open it (it shows the answers).
+export function isLoopbackRequest(req) {
+  if (PROXY_HEADERS.some((h) => req.headers[h])) return false;
+  return isLoopback(req.socket.remoteAddress);
+}
+
 export function requireLocal(req, res, next) {
   if (isLocalRequest(req)) return next();
   res.status(404).end();

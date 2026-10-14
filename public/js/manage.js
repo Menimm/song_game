@@ -118,7 +118,8 @@ function songRow(s, i) {
   };
   return el('div', { class: 'song', style: s.unavailable ? 'background:#ffe3e0' : '' },
     enabled,
-    el('div', {}, field('title', { dir: 'auto' }), s.unavailable ? el('div', { class: 'err', text: '⚠ הקובץ לא נטען — הוסר מהמשחק' }) : null),
+    el('div', {}, field('title', { dir: 'auto' }), s.unavailable ? el('div', { class: 'err' }, '⚠ הקובץ לא נטען — הוסר מהמשחק ',
+      el('button', { class: 'btn sun', text: '↩ החזר למשחק', onclick: async () => { await save(s, { unavailable: false }); await load(); } })) : null),
     field('artist', { dir: 'auto' }),
     el('div', { class: 'row' }, el('button', { class: 'btn alt', onclick: move(-1), text: '↑' }), el('button', { class: 'btn alt', onclick: move(1), text: '↓' }),
       el('button', { class: 'btn warn', text: '🗑', onclick: async () => { if (confirm(`למחוק את "${s.title}"?`)) { await api(`/song/${s.id}`, { method: 'DELETE' }); await load(); } } })),
@@ -205,7 +206,7 @@ extraBox.append(spotifyPanel());
 
 app.append(
   el('div', { class: 'top' }, el('b', { text: 'ניהול שירים' }), idxLabel,
-    el('button', { class: 'btn sun', onclick: refreshIndex, text: 'רענון אינדקס' }), el('a', { href: '/host', text: 'למסך המנחה' })),
+    el('button', { class: 'btn sun', onclick: refreshIndex, text: 'רענון אינדקס' }), el('a', { href: '/host', target: '_blank', text: 'למסך המנחה' })),
   el('div', { class: 'wrap' },
     el('div', { class: 'card' }, el('h3', { text: '🔎 חיפוש ב-BIGBOX' }), el('div', { class: 'row' }, searchBox), resultsBox),
     extraBox, el('div', { class: 'card' }, dropBox), toolsCard,

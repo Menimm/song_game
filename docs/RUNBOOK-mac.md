@@ -15,7 +15,7 @@ MANAGE_PIN=1234 npm start          # music folder defaults to /Volumes/music; ov
 ```
 The terminal prints a QR code, the room code, and the URLs. If it says "No public tunnel", phones must be on the home Wi-Fi.
 
-1. Chrome → `http://localhost:3000/host` → press **הפעלת סאונד** (you should hear a two-note beep). This tab plays all audio; keep it open.
+1. Chrome → `http://localhost:3000/host` → press **הפעלת סאונד** (you should hear a two-note beep). This tab plays all audio; keep it open. The operator page opens **only on the Mac itself** (via `localhost`) — phones on the Wi-Fi can't open it. If you open a second host tab by accident it is ignored; only the tab where you pressed the sound button plays audio. Room codes are 4 digits (shown on the TV and in the terminal).
 2. Second window on the TV (HDMI, extended display) → `http://localhost:3000/tv` → full screen (Cmd+Ctrl+F).
 3. System Settings → Sound → Output → the TV or speaker.
 4. Girls scan the QR on the TV (or type the code at the phone URL) and enter a nickname.

@@ -6,6 +6,7 @@ export class HostAudio {
     this.mode = null;                 // 'clip' (game-driven intro) | 'full' (operator-controlled full song) | null
     this.transport = new Transport(0);
     this.gen = 0;
+    this.loadGen = 0;
   }
 
   get duration() { return this.buffer?.duration ?? 0; }
@@ -17,9 +18,12 @@ export class HostAudio {
 
   async load(url) {
     this.release();
+    const mine = this.loadGen;                       // release() (skip / next round) bumps this and abandons the load
     const r = await fetch(url);
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    this.buffer = await this.ctx.decodeAudioData(await r.arrayBuffer());   // one song at a time (~40 MB of PCM)
+    const buf = await this.ctx.decodeAudioData(await r.arrayBuffer());   // one song at a time (~40 MB of PCM)
+    if (mine !== this.loadGen) throw new Error('superseded');
+    this.buffer = buf;
   }
 
   _source() {
@@ -40,11 +44,13 @@ export class HostAudio {
     gain.gain.setValueAtTime(1, when + Math.max(0.005, len - 0.03));
     gain.gain.linearRampToValueAtTime(0, when + len);
     src.start(when, offsetMs / 1000, len);
-    setTimeout(onStarted, 60);                    // ack once the scheduled start time has arrived
+    // wake a context the operator paused earlier, then ack once the scheduled start has arrived
+    this.ctx.resume().then(() => setTimeout(onStarted, 60), () => setTimeout(onStarted, 60));
   }
 
   // ---- full song, operator-controlled (play / pause / seek) ----
   playFull(offsetMs) {
+    this.ctx.resume();
     this.mode = 'full';
     this.transport = new Transport(this.duration);
     this._startFull(offsetMs / 1000);
@@ -79,5 +85,9 @@ export class HostAudio {
   pause() { this.ctx?.suspend(); }
   resume() { this.ctx?.resume(); }
   stop() { try { this.src?.stop(); } catch { /* already stopped */ } this.src = null; }
-  release() { this.gen++; this.stop(); this.buffer = null; this.mode = null; this.transport = new Transport(0); }
+  release() {
+    this.gen++; this.loadGen++;
+    this.stop(); this.buffer = null; this.mode = null; this.transport = new Transport(0);
+    this.ctx?.resume();                           // never leave a paused (suspended) context behind for the next round
+  }
 }

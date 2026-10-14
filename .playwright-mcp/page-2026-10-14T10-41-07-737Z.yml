@@ -1,0 +1,108 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e2]:
+    - generic [ref=f5e286]:
+      - generic [ref=f5e287]: מסך מנחה
+      - generic [ref=f5e288]: "קוד: 4430"
+      - generic [ref=f5e289]: http://192.168.1.99:3100/play?c=4430
+      - link "פתח טלוויזיה" [ref=f5e290] [cursor=pointer]:
+        - /url: /tv
+      - link "ניהול שירים" [ref=f5e291] [cursor=pointer]:
+        - /url: /manage
+    - generic [ref=f5e292]:
+      - generic [ref=f5e293]:
+        - generic [ref=f5e294]:
+          - generic [ref=f5e295]:
+            - generic [ref=f5e296]: שלב פעיל
+            - generic [ref=f5e297]: שלב 1/5
+            - generic [ref=f5e298]: "6"
+          - generic [ref=f5e299]: 🎵 Shake It Off — Taylor Swift
+          - generic [ref=f5e300]:
+            - button "⏸ הפסק" [ref=f5e301] [cursor=pointer]
+            - button "🔁 שוב" [ref=f5e302] [cursor=pointer]
+            - button "➕ ארוך יותר" [ref=f5e303] [cursor=pointer]
+            - button "👀 חשוף" [ref=f5e304] [cursor=pointer]
+            - button "⏭ דלג" [ref=f5e305] [cursor=pointer]
+            - button "➡ הבא" [disabled] [ref=f5e306]
+          - generic [ref=f5e307]:
+            - generic [ref=f5e308]: "ניסיונות (שלבים):"
+            - combobox [ref=f5e309]:
+              - option "1"
+              - option "2"
+              - option "3"
+              - option "4"
+              - option "5" [selected]
+        - generic [ref=f5e311]:
+          - heading "שחקניות (0)" [level=3] [ref=f5e312]
+          - generic [ref=f5e313]:
+            - button "🤖 +3 בוטים" [ref=f5e314] [cursor=pointer]
+            - button "הסר בוטים" [ref=f5e315] [cursor=pointer]
+      - generic [ref=f5e316]:
+        - generic [ref=f5e317]:
+          - heading "שירים" [level=3] [ref=f5e318]
+          - button "🎲 אקראי" [disabled] [ref=f5e319]
+        - generic [ref=f5e320]:
+          - button "▶" [disabled] [ref=f5e321]
+          - generic [ref=f5e322]: Shake It Off — Taylor Swift
+          - generic [ref=f5e323]: שוחק
+        - generic [ref=f5e324]:
+          - button "▶" [disabled] [ref=f5e325]
+          - generic [ref=f5e326]: Flowers — Miley Cyrus
+        - generic [ref=f5e327]:
+          - button "▶" [disabled] [ref=f5e328]
+          - generic [ref=f5e329]: Roar — Katy Perry
+        - generic [ref=f5e330]:
+          - button "▶" [disabled] [ref=f5e331]
+          - generic [ref=f5e332]: Watermelon Sugar — Harry Styles
+        - generic [ref=f5e333]:
+          - button "▶" [disabled] [ref=f5e334]
+          - generic [ref=f5e335]: Don't Start Now — Dua Lipa
+        - generic [ref=f5e336]:
+          - button "▶" [disabled] [ref=f5e337]
+          - generic [ref=f5e338]: Hips Don't Lie (feat. Wyclef Jean) — Shakira
+        - generic [ref=f5e339]:
+          - button "▶" [disabled] [ref=f5e340]
+          - generic [ref=f5e341]: הרקדן האוטומטי — צביקה פיק
+        - generic [ref=f5e342]:
+          - button "▶" [disabled] [ref=f5e343]
+          - generic [ref=f5e344]: יש לי ציפור קטנה בלב — נועה קירל
+        - generic [ref=f5e345]:
+          - button "▶" [disabled] [ref=f5e346]
+          - generic [ref=f5e347]: מיליון דולר — נועה קירל, שחר סאול
+        - generic [ref=f5e348]:
+          - button "▶" [disabled] [ref=f5e349]
+          - generic [ref=f5e350]: אם אתה גבר — נועה קירל
+        - generic [ref=f5e351]:
+          - button "▶" [disabled] [ref=f5e352]
+          - generic [ref=f5e353]: אמבולנס — נועה קירל, מרגי
+        - generic [ref=f5e354]:
+          - button "▶" [disabled] [ref=f5e355]
+          - generic [ref=f5e356]: טיקיטאס — נועה קירל, סטפן לגר, אריסה
+        - generic [ref=f5e357]:
+          - button "▶" [disabled] [ref=f5e358]
+          - generic [ref=f5e359]: חללית — גזוז
+        - generic [ref=f5e360]:
+          - button "▶" [disabled] [ref=f5e361]
+          - generic [ref=f5e362]: תשע בכיכר — גזוז
+        - generic [ref=f5e363]:
+          - button "▶" [disabled] [ref=f5e364]
+          - generic [ref=f5e365]: רוני — גזוז
+        - generic [ref=f5e366]:
+          - button "▶" [disabled] [ref=f5e367]
+          - generic [ref=f5e368]: Wrecking Ball — Miley Cyrus
+        - generic [ref=f5e369]:
+          - button "▶" [disabled] [ref=f5e370]
+          - generic [ref=f5e371]: Blank Space — Taylor Swift
+        - generic [ref=f5e372]:
+          - button "▶" [disabled] [ref=f5e373]
+          - generic [ref=f5e374]: A Sky Full of Stars — Coldplay
+        - generic [ref=f5e375]:
+          - button "▶" [disabled] [ref=f5e376]
+          - generic [ref=f5e377]: Bad Romance — Lady Gaga
+        - generic [ref=f5e378]:
+          - button "▶" [disabled] [ref=f5e379]
+          - generic [ref=f5e380]: Calm Down — Rema
+  - generic [ref=f5e96]:
+    - button "▶" [disabled] [ref=f5e97]
+    - slider [disabled] [ref=f5e98]: "0"
+    - generic [ref=f5e99]: 0:00 / 0:00
+    - generic [ref=f5e100]: הנגן נפתח אחרי החשיפה (במהלך הסיבוב המשחק שולט בקטעים)

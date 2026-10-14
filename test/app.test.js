@@ -40,7 +40,7 @@ async function waitFor(msgs, pred, ms = 3000) {
 
 test('a full round over WebSocket: join, play, answer, reveal, score', async () => {
   const { app, port } = await boot();
-  const host = client(port); await host.open; host.send({ t: 'hello', role: 'host' });
+  const host = client(port); await host.open; host.send({ t: 'hello', role: 'host' }); host.cmd('audioReady');
   const phone = client(port); await phone.open;
   phone.send({ t: 'hello', role: 'player', code: app.game.code.toLowerCase(), name: 'מאי' });
   const joined = await waitFor(phone.msgs, (m) => m.t === 'joined');
@@ -111,9 +111,39 @@ test('a WebSocket from a foreign web page (cross-site Origin) is refused; same-o
   await app.close();
 });
 
+test('only the host page that unlocked sound receives audio commands; a second host tab cannot abort rounds', async () => {
+  const { app, port } = await boot();
+  const audio = client(port); await audio.open; audio.send({ t: 'hello', role: 'host' }); audio.cmd('audioReady');
+  const spare = client(port); await spare.open; spare.send({ t: 'hello', role: 'host' });     // e.g. a second tab, sound never unlocked
+  await waitFor(spare.msgs, (m) => m.t === 'state');
+  audio.cmd('startRound', { songId: 's0' });
+  await waitFor(audio.msgs, (m) => m.t === 'preload');
+  await new Promise((r) => setTimeout(r, 100));
+  assert.equal(spare.msgs.some((m) => m.t === 'preload'), false);
+  assert.equal(app.game.phase, 'preloading');                                                 // not aborted by the spare tab
+  audio.cmd('hostReady', { songId: 's0' });
+  await waitFor(audio.msgs, (m) => m.t === 'play_step');
+  spare.cmd('audioReady');                                                                    // the newest unlocked host takes over
+  audio.cmd('skip'); audio.cmd('startRound', { songId: 's1' });
+  await waitFor(spare.msgs, (m) => m.t === 'preload' && m.song.id === 's1');
+  await app.close();
+});
+
+test('a timeout while preloading does not flag the song; an explicit file error does', async () => {
+  const { app, port } = await boot();
+  const host = client(port); await host.open; host.send({ t: 'hello', role: 'host' }); host.cmd('audioReady');
+  host.cmd('startRound', { songId: 's3' });
+  await waitFor(host.msgs, (m) => m.t === 'preload');
+  host.cmd('preloadFailed', { reason: 'timeout', songId: 's3' });
+  await waitFor(host.msgs, (m) => m.t === 'state' && m.s.phase === 'idle');
+  await new Promise((r) => setTimeout(r, 50));
+  assert.equal(app.store.get('s3').unavailable, false);
+  await app.close();
+});
+
 test('missing song file at preload flags the song unavailable and the game continues', async () => {
   const { app, port } = await boot();
-  const host = client(port); await host.open; host.send({ t: 'hello', role: 'host' });
+  const host = client(port); await host.open; host.send({ t: 'hello', role: 'host' }); host.cmd('audioReady');
   host.cmd('startRound', { songId: 's1' });
   await waitFor(host.msgs, (m) => m.t === 'preload');
   host.cmd('preloadFailed', { reason: '404' });

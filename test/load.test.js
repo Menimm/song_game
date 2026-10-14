@@ -33,7 +33,7 @@ test('14 phones: everyone joins, 13 answer wrong, 1 answers right, all see the r
   const app = await createApp({ config: { ...base, ...fast, dataDir: dir, songsDir } });
   const port = await app.listen(0);
 
-  const host = client(port); await host.open; host.send({ t: 'hello', role: 'host' });
+  const host = client(port); await host.open; host.send({ t: 'hello', role: 'host' }); host.send({ t: 'cmd', c: 'audioReady', args: {} });
   const phones = Array.from({ length: 14 }, () => client(port));
   await Promise.all(phones.map((p) => p.open));
   phones.forEach((p, i) => p.send({ t: 'hello', role: 'player', code: app.game.code, name: `בת ${i + 1}` }));

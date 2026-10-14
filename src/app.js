@@ -8,7 +8,7 @@ import { Game, realTimers } from './game/game.js';
 import { BotRunner } from './game/bots.js';
 import { LibraryStore } from './library/store.js';
 import { attachHub } from './net/hub.js';
-import { isLocalRequest, requireLocal, requirePin } from './net/guard.js';
+import { isLocalRequest, isLoopbackRequest, requireLocal, requirePin } from './net/guard.js';
 import { IndexService } from './library/indexer.js';
 import { manageRouter } from './net/manage-routes.js';
 
@@ -20,6 +20,8 @@ export function lanUrl(port) {
 }
 
 const PRIVATE_FILES = /^\/(host|tv|manage)(\.html)?$|^\/js\/(host|manage|host-audio|transport|bpm)\.js$/;
+
+const HOST_ONLY = /^\/host(\.html)?$|^\/js\/(host|host-audio|transport)\.js$/;
 
 export async function createApp({ config, timers = realTimers, rng = Math.random } = {}) {
   await fsp.mkdir(path.join(config.songsDir, 'art'), { recursive: true });
@@ -43,6 +45,8 @@ export async function createApp({ config, timers = realTimers, rng = Math.random
   const joinUrl = () => `${joinBase()}/play?c=${game.code}`;
 
   app.use((req, res, next) => (PRIVATE_FILES.test(req.path) && !isLocalRequest(req) ? res.status(404).end() : next()));
+  // The operator page shows the answers and drives the game: only the computer running the server may open it.
+  app.use((req, res, next) => (HOST_ONLY.test(req.path) && !isLoopbackRequest(req) ? res.status(404).end() : next()));
   app.get('/healthz', (req, res) => res.send('ok'));
   app.get('/favicon.ico', (req, res) => res.status(204).end());
   app.get('/api/join', (req, res) => res.json({ code: game.code, url: joinUrl() }));

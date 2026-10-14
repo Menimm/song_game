@@ -24,7 +24,7 @@ const timer = new LocalTimer();
 function forgetRoom() { code = ''; token = ''; mem.set('may.code', ''); mem.set('may.token', ''); }
 
 const conn = connect({
-  role: 'player',
+  role: 'player', reconnectOnWake: true,
   getHello: () => (code && (token || name) ? { code, name, token } : null),
   onState(s) { state = s; timer.update(s.timer); render(); },
   onMessage(m) {

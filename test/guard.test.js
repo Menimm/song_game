@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isPrivateAddress, isLoopback, isLocalRequest, requireLocal, requirePin } from '../src/net/guard.js';
+import { isPrivateAddress, isLoopback, isLocalRequest, isLoopbackRequest, requireLocal, requirePin } from '../src/net/guard.js';
 
 const req = (addr, headers = {}) => ({ headers, socket: { remoteAddress: addr } });
 const res = () => { const r = { code: 200, status(c) { r.code = c; return r; }, end() { r.ended = true; }, json() { r.ended = true; } }; return r; };
@@ -17,6 +17,13 @@ test('a tunnelled request from loopback is NOT local (cloudflared connects from 
   assert.equal(isLocalRequest(req('127.0.0.1', { 'cf-connecting-ip': '5.5.5.5' })), false);
   assert.equal(isLocalRequest(req('127.0.0.1', { 'x-forwarded-for': '5.5.5.5' })), false);
   assert.equal(isLocalRequest(req('8.8.8.8')), false);
+});
+
+test('the operator page is for this computer only: a phone on the LAN is not loopback', () => {
+  assert.equal(isLoopbackRequest(req('127.0.0.1')), true);
+  assert.equal(isLoopbackRequest(req('::1')), true);
+  assert.equal(isLoopbackRequest(req('192.168.1.50')), false);
+  assert.equal(isLoopbackRequest(req('127.0.0.1', { 'cf-connecting-ip': '5.5.5.5' })), false);
 });
 
 test('requireLocal 404s non-local requests', () => {

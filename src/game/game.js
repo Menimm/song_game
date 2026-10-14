@@ -199,24 +199,34 @@ export class Game extends EventEmitter {
     return { ok: true };
   }
 
-  hostReady() {
+  hostReady(songId) {
     if (this.phase !== 'preloading') return;
+    if (songId && songId !== this.round.song.id) return;     // stale answer from an abandoned round
     this.phase = 'countdown';
     this.timer.start(this.config.preRoundMs, () => this.beginStep(0));
     this.emit('sfx', 'countdown');
     this.changed();
   }
 
-  preloadFailed(reason = 'error') {
+  preloadFailed(reason = 'error', forSongId) {
     if (this.phase !== 'preloading') return;
     const songId = this.round.song.id;
+    if (forSongId && forSongId !== songId) return;           // stale report about an abandoned round
     this.timer.clear();
     this.notices.push({ t: 'missing', songId, reason, at: this.timers.now() });
     this.emit('host', { t: 'stop' });
-    this.emit('song_unavailable', { songId, reason });
+    // Only a real file problem removes the song; a timeout / locked sound is not the song's fault.
+    if (!/^(timeout|locked)$/.test(reason)) this.emit('song_unavailable', { songId, reason });
     this.phase = 'idle';
     this.round = null;
     this.changed();
+  }
+
+  // The page that plays audio (re)connected: tell it which song to load again so a reload mid-round recovers.
+  audioRejoined() {
+    if (!this.round || this.phase === 'idle') return;
+    const s = this.round.song;
+    this.emit('host', { t: 'preload', song: { id: s.id, file: s.file, offsetMs: s.offsetMs || 0 }, resync: this.phase !== 'preloading' });
   }
 
   beginStep(i, keepLocks = false) {

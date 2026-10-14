@@ -13,18 +13,29 @@ const conn = connect({
   role: 'host', getHello: () => ({}),
   onState(s) { state = s; timer.update(s.timer); render(); },
   onMessage: handle,
-  onStatus: (st) => { if (st === 'open') fetch('/api/join').then((r) => r.json()).then((j) => { joinInfo = j; render(); }).catch(() => {}); },
+  onStatus: (st) => {
+    if (st !== 'open') return;
+    if (unlocked) cmd('audioReady');                       // after a reconnect/reload: claim the audio role again
+    fetch('/api/join').then((r) => r.json()).then((j) => { joinInfo = j; render(); }).catch(() => {});
+  },
 });
 
+let preloadId = null;
 async function handle(m) {
   switch (m.t) {
-    case 'preload':
+    case 'preload': {
+      const id = m.song.id; preloadId = id;
       try {
-        if (!unlocked) throw new Error('הסאונד לא הופעל');
         await audio.load(`/songs/${encodeURIComponent(m.song.file)}`);
-        cmd('hostReady');
-      } catch (e) { cmd('preloadFailed', { reason: String(e.message || e) }); }
+        if (preloadId !== id) return;                      // a newer round already started
+        if (m.resync) { if (state?.phase === 'revealed') audio.playFull(m.song.offsetMs); }
+        else cmd('hostReady', { songId: id });
+      } catch (e) {
+        if (String(e.message) === 'superseded' || preloadId !== id || m.resync) return;
+        cmd('preloadFailed', { reason: String(e.message || e), songId: id });
+      }
       break;
+    }
     case 'play_step': audio.playClip(m.offsetMs, m.lengthMs, () => cmd('stepStarted')); break;
     case 'pause': audio.pause(); break;
     case 'resume': audio.resume(); break;
@@ -56,7 +67,10 @@ function controls(s) {
       el('select', { onchange: (e) => cmd('setMaxSteps', { n: Number(e.target.value) }) },
         [1, 2, 3, 4, 5].map((n) => el('option', { value: n, selected: n === s.maxSteps, text: n }))),
       toast ? el('span', { class: 'err', text: toast }) : null),
-    last ? el('div', { class: 'err', text: `⚠ השיר ${last.songId} לא נטען (${last.reason}) — הוסר מהרשימה` }) : null);
+    s.phase !== 'idle' && s.phase !== 'preloading' && !audio.buffer ? el('div', { class: 'err', text: '⚠ אין שמע טעון במסך הזה — לחצו "דלג" והתחילו שיר מחדש' }) : null,
+    last ? el('div', { class: 'err', text: last.reason === 'timeout' || last.reason === 'locked'
+      ? '⚠ השיר לא נטען בזמן — בדקו שלחצתם "הפעלת סאונד" במסך המנחה הזה (השיר נשאר ברשימה)'
+      : `⚠ השיר ${last.songId} לא נטען (${last.reason}) — הוסר מהמשחק. אפשר להחזיר אותו ב"ניהול שירים"` }) : null);
 }
 
 function songList(s) {
@@ -78,7 +92,7 @@ function render() {
   if (!state) return;
   const s = state;
   app.replaceChildren(...[
-    unlocked ? null : el('div', { class: 'overlay' }, btn('🔊 הפעלת סאונד (חובה לפני שמתחילים)', async () => { await audio.unlock(); unlocked = true; sfx(audio.ctx, 'test'); render(); }, 'sun')),
+    unlocked ? null : el('div', { class: 'overlay' }, btn('🔊 הפעלת סאונד (חובה לפני שמתחילים)', async () => { await audio.unlock(); unlocked = true; cmd('audioReady'); sfx(audio.ctx, 'test'); render(); }, 'sun')),
     el('div', { class: 'top' }, el('span', { text: 'מסך מנחה' }), el('span', { dir: 'ltr', text: `קוד: ${joinInfo.code || s.code}` }), el('span', { dir: 'ltr', text: joinInfo.url }),
       el('a', { href: '/tv', target: '_blank', text: 'פתח טלוויזיה' }), el('a', { href: '/manage', target: '_blank', text: 'ניהול שירים' })),
     el('div', { class: 'host-grid' }, el('div', {}, controls(s), el('div', { style: 'height:14px' }), players(s)), songList(s)),

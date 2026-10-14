@@ -1,9 +1,10 @@
 import { WebSocketServer } from 'ws';
-import { isLocalRequest } from './guard.js';
+import { isLocalRequest, isLoopbackRequest } from './guard.js';
 
 export function attachHub({ server, game }) {
   const wss = new WebSocketServer({ noServer: true });
   const clients = new Set();
+  let audioHost = null;                 // the one host page that unlocked sound; only it gets audio commands
 
   server.on('upgrade', (req, socket, head) => {
     if (!req.url.startsWith('/ws')) return socket.destroy();
@@ -12,23 +13,25 @@ export function attachHub({ server, game }) {
     if (origin) {
       let same = false;
       try { same = new URL(origin).host === req.headers.host; } catch { /* malformed */ }
-      if (!same) return socket.destroy();
+      if (!same) { console.warn(`WebSocket refused: Origin ${origin} does not match Host ${req.headers.host}`); return socket.destroy(); }
     }
     const local = isLocalRequest(req);
-    wss.handleUpgrade(req, socket, head, (ws) => { ws.local = local; wss.emit('connection', ws, req); });
+    const loopback = isLoopbackRequest(req);
+    wss.handleUpgrade(req, socket, head, (ws) => { ws.local = local; ws.loopback = loopback; wss.emit('connection', ws, req); });
   });
 
   const send = (ws, m) => { if (ws.readyState === 1) ws.send(JSON.stringify(m)); };
   const push = (c) => { if (c.role) send(c.ws, { t: 'state', s: game.snapshot(c.role, c.playerId) }); };
   const onChange = () => clients.forEach(push);
-  const onHost = (m) => clients.forEach((c) => c.role === 'host' && send(c.ws, m));
-  const onSfx = (name) => clients.forEach((c) => c.role === 'host' && send(c.ws, { t: 'sfx', name }));
+  const onHost = (m) => { if (audioHost) send(audioHost.ws, m); };
+  const onSfx = (name) => { if (audioHost) send(audioHost.ws, { t: 'sfx', name }); };
   game.on('change', onChange); game.on('host', onHost); game.on('sfx', onSfx);
 
   function hello(c, m) {
     if (!['player', 'tv', 'host'].includes(m.role)) return;
     if (m.role !== 'player') {
-      if (!c.ws.local) { send(c.ws, { t: 'error', e: 'forbidden' }); return c.ws.close(); }
+      const allowed = m.role === 'host' ? c.ws.loopback : c.ws.local;      // host = this computer only; TV may be on the LAN
+      if (!allowed) { send(c.ws, { t: 'error', e: 'forbidden' }); return c.ws.close(); }
       c.role = m.role;
       return push(c);
     }
@@ -54,9 +57,10 @@ export function attachHub({ server, game }) {
       case 'setMaxSteps': game.setMaxSteps(a.n); break;
       case 'adjust': game.adjust(String(a.id), Number(a.delta) || 0); break;
       case 'kick': game.kick(String(a.id)); break;
-      case 'hostReady': game.hostReady(); break;
-      case 'stepStarted': game.stepStarted(); break;
-      case 'preloadFailed': game.preloadFailed(String(a.reason || 'error')); break;
+      case 'audioReady': audioHost = c; game.audioRejoined(); break;
+      case 'hostReady': if (c === audioHost) game.hostReady(a.songId ? String(a.songId) : undefined); break;
+      case 'stepStarted': if (c === audioHost) game.stepStarted(); break;
+      case 'preloadFailed': if (c === audioHost) game.preloadFailed(String(a.reason || 'error'), a.songId ? String(a.songId) : undefined); break;
       default: hub.extra?.(c, m, send);
     }
   }
@@ -73,6 +77,7 @@ export function attachHub({ server, game }) {
     });
     ws.on('close', () => {
       clients.delete(c);
+      if (audioHost === c) audioHost = null;
       if (c.playerId && ![...clients].some((o) => o.playerId === c.playerId)) game.disconnect(c.playerId);
     });
   });
