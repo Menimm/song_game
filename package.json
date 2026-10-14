@@ -1,0 +1,19 @@
+{
+  "name": "identify-songs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node scripts/start.js",
+    "dev": "node scripts/dev.js",
+    "seed": "node scripts/seed.js",
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "music-metadata": "^10.0.0",
+    "qrcode": "^1.5.4",
+    "ws": "^8.18.0"
+  }
+}
