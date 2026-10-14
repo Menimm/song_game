@@ -8,10 +8,10 @@ export const realTimers = {
   now: () => Date.now(),
 };
 
-const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+// Room code: n digits, first digit 1-9 (easy for kids to type on a phone number pad)
 export function makeCode(rng = Math.random, n = 4) {
-  let s = '';
-  for (let i = 0; i < n; i++) s += ALPHABET[Math.floor(rng() * ALPHABET.length)];
+  let s = String(1 + Math.floor(rng() * 9));
+  for (let i = 1; i < n; i++) s += Math.floor(rng() * 10);
   return s;
 }
 

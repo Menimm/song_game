@@ -9,11 +9,19 @@ const ERR = { bad_code: 'הקוד לא נכון', bad_name: 'צריך להקלי
 const app = document.getElementById('app');
 const q = new URLSearchParams(location.search);
 
-let code = (q.get('c') || mem.get('may.code') || '').toUpperCase();
+const digits = (s) => String(s ?? '').replace(/\D/g, '').slice(0, 4);
+const urlCode = digits(q.get('c'));
+const savedCode = digits(mem.get('may.code'));
+
+// The code in the link wins. A saved token only belongs to the room it was saved in.
+let code = urlCode || savedCode;
 let name = mem.get('may.name') || '';
-let token = mem.get('may.token') || '';
+let token = (!urlCode || urlCode === savedCode) ? (mem.get('may.token') || '') : '';
 let joined = false; let state = null; let error = '';
+const draft = { code: urlCode, name };                 // what is typed in the form; survives re-renders
 const timer = new LocalTimer();
+
+function forgetRoom() { code = ''; token = ''; mem.set('may.code', ''); mem.set('may.token', ''); }
 
 const conn = connect({
   role: 'player',
@@ -25,7 +33,12 @@ const conn = connect({
       mem.set('may.token', token); mem.set('may.name', name); mem.set('may.code', code);
       keepAwake();
     } else if (m.t === 'error') {
-      joined = false; token = ''; error = ERR[m.e] || 'משהו השתבש'; render();
+      joined = false;
+      if (m.e === 'bad_code') { forgetRoom(); draft.code = urlCode; }   // a stale remembered code must not come back
+      else token = '';
+      error = ERR[m.e] || 'משהו השתבש';
+      const msg = document.getElementById('formErr');          // update in place so the keyboard/typing is not disturbed
+      if (msg) msg.textContent = error; else render();
     }
   },
 });
@@ -34,17 +47,21 @@ async function keepAwake() { try { await navigator.wakeLock?.request('screen'); 
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && joined) keepAwake(); });
 
 function formView() {
-  const codeIn = el('input', { value: code, maxlength: 4, placeholder: 'קוד', autocapitalize: 'characters', autocomplete: 'off', dir: 'ltr' });
-  const nameIn = el('input', { value: name, maxlength: 16, placeholder: 'הכינוי שלך', autocomplete: 'off' });
+  const codeIn = el('input', { value: draft.code, maxlength: 4, placeholder: 'קוד החדר (4 ספרות)', inputmode: 'numeric', pattern: '[0-9]*', autocomplete: 'off', dir: 'ltr' });
+  const nameIn = el('input', { value: draft.name, maxlength: 16, placeholder: 'הכינוי שלך', autocomplete: 'off' });
+  codeIn.addEventListener('input', () => { draft.code = digits(codeIn.value); if (codeIn.value !== draft.code) codeIn.value = draft.code; });
+  nameIn.addEventListener('input', () => { draft.name = nameIn.value; });
   const go = () => {
-    code = codeIn.value.trim().toUpperCase(); name = nameIn.value.trim(); token = '';
-    if (!code || !name) { error = ERR.bad_name; return render(); }
+    code = digits(draft.code); name = draft.name.trim(); token = '';
+    if (code.length !== 4) { error = ERR.bad_code; return render(); }
+    if (!name) { error = ERR.bad_name; return render(); }
+    error = '';
     conn.hello();
   };
   return el('div', {},
     el('div', { class: 'card' }, el('img', { src: '/img/capybara.svg', width: 160, alt: '' }), el('h2', { text: 'המסיבה של מאי 🎶' }), el('p', { text: 'מזהים שיר מההתחלה!' })),
     el('form', { class: 'form', onsubmit: (e) => { e.preventDefault(); go(); } }, codeIn, nameIn,
-      el('div', { class: 'err', text: error }), el('button', { class: 'btn', type: 'submit', text: 'יאללה, נכנסים!' })));
+      el('div', { class: 'err', id: 'formErr', text: error }), el('button', { class: 'btn', type: 'submit', text: 'יאללה, נכנסים!' })));
 }
 
 function timerBlock() {

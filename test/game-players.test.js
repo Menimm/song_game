@@ -61,8 +61,10 @@ test('adjust never drops below zero; kick removes the player', () => {
   assert.equal(g.snapshot('tv').leaderboard.length, 0);
 });
 
-test('codes are 4 letters without ambiguous characters', () => {
-  for (let i = 0; i < 50; i++) assert.match(makeCode(), /^[A-HJ-NP-Z]{4}$/);
+test('room codes are 4 digits, never starting with 0', () => {
+  for (let i = 0; i < 200; i++) assert.match(makeCode(), /^[1-9]\d{3}$/);
+  assert.equal(makeCode(() => 0), '1000');
+  assert.equal(makeCode(() => 0.999999), '9999');
 });
 
 test('player snapshot has `you` and never leaks answers; tv snapshot has no `you`', () => {

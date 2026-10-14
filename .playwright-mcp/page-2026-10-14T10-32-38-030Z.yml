@@ -1,0 +1,9 @@
+- generic [ref=f4e3]:
+  - generic [ref=f4e4]:
+    - heading "המסיבה של מאי 🎶" [level=2] [ref=f4e5]
+    - paragraph [ref=f4e6]: מזהים שיר מההתחלה!
+  - generic [ref=f4e7]:
+    - textbox "קוד החדר (4 ספרות)" [ref=f4e8]
+    - textbox "הכינוי שלך" [ref=f4e9]: ישן
+    - generic [ref=f4e10]: הקוד לא נכון
+    - button "יאללה, נכנסים!" [ref=f4e11] [cursor=pointer]
