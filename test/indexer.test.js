@@ -45,6 +45,13 @@ test('a failed refresh keeps the old index and reports the error', async () => {
   assert.ok(svc.status().error);
 });
 
+test('resolve works when the music root is a filesystem/share root that ends in a separator', () => {
+  const root = path.parse(process.cwd()).root;                     // 'C:\\' on Windows, '/' elsewhere (same shape as \\\\NAS\\share)
+  const svc = new IndexService({ root, cacheFile: path.join(os.tmpdir(), 'unused.json') });
+  assert.equal(svc.resolve('some/dir/file.mp3'), path.join(root, 'some', 'dir', 'file.mp3'));
+  assert.equal(svc.resolve('../file.mp3'), null);
+});
+
 test('resolve refuses traversal, absolute escapes, wrong extensions and non-strings', async () => {
   const root = await tree(FILES);
   const svc = new IndexService({ root, cacheFile: path.join(root, 'index.json') });

@@ -70,7 +70,8 @@ export class IndexService {
     if (typeof rel !== 'string' || !rel || rel.includes('\0')) return null;
     const root = path.resolve(this.root);
     const abs = path.resolve(root, ...rel.split('/'));
-    if (abs !== root && !abs.startsWith(root + path.sep)) return null;
+    const prefix = root.endsWith(path.sep) ? root : root + path.sep;     // share/drive roots already end with a separator
+    if (abs !== root && !abs.startsWith(prefix)) return null;
     if (!AUDIO_EXT.has(path.extname(abs).toLowerCase())) return null;
     return abs;
   }
