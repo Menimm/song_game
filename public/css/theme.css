@@ -27,4 +27,8 @@ a { color: inherit; }
 .row { display: flex; gap: 6px; align-items: center; padding: 4px 0; } .row .grow, .grow { flex: 1; }
 .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; background: var(--sun); font-size: .8em; font-weight: 700; }
 .overlay { position: fixed; inset: 0; background: rgba(43,26,16,.85); display: flex; align-items: center; justify-content: center; z-index: 10; }
+.transport { position: fixed; inset-inline: 0; bottom: 0; background: var(--brown); color: #fff; padding: 10px 16px; display: flex; gap: 12px; align-items: center; z-index: 5; }
+.transport input[type=range] { flex: 1; direction: ltr; accent-color: var(--sun); }
+.transport .time { font-variant-numeric: tabular-nums; direction: ltr; min-width: 92px; text-align: center; }
+.transport .note { opacity: .8; font-size: .85em; }
 @media (max-width: 800px) { .host-grid { grid-template-columns: 1fr; } }

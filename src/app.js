@@ -5,9 +5,12 @@ import fsp from 'node:fs/promises';
 import express from 'express';
 import QRCode from 'qrcode';
 import { Game, realTimers } from './game/game.js';
+import { BotRunner } from './game/bots.js';
 import { LibraryStore } from './library/store.js';
 import { attachHub } from './net/hub.js';
-import { isLocalRequest, requireLocal } from './net/guard.js';
+import { isLocalRequest, requireLocal, requirePin } from './net/guard.js';
+import { IndexService } from './library/indexer.js';
+import { manageRouter } from './net/manage-routes.js';
 
 export function lanUrl(port) {
   for (const list of Object.values(os.networkInterfaces())) {
@@ -16,13 +19,17 @@ export function lanUrl(port) {
   return `http://localhost:${port}`;
 }
 
-const PRIVATE_FILES = /^\/(host|tv|manage)(\.html)?$|^\/js\/(host|manage|host-audio|bpm)\.js$/;
+const PRIVATE_FILES = /^\/(host|tv|manage)(\.html)?$|^\/js\/(host|manage|host-audio|transport|bpm)\.js$/;
 
 export async function createApp({ config, timers = realTimers, rng = Math.random } = {}) {
   await fsp.mkdir(path.join(config.songsDir, 'art'), { recursive: true });
   await fsp.mkdir(config.dataDir, { recursive: true });
   const store = new LibraryStore(path.join(config.dataDir, 'songs.json'));
   await store.load();
+  let aliases = [];
+  try { aliases = JSON.parse(await fsp.readFile(path.join(config.rootDir, 'data', 'aliases.json'), 'utf8')); } catch { /* optional */ }
+  const index = new IndexService({ root: config.musicDir, cacheFile: path.join(config.dataDir, 'index.json'), aliases });
+  await index.load();
   const game = new Game({ config, getSongs: () => store.enabled(), timers, rng });
   game.on('song_unavailable', ({ songId }) => { store.update(songId, { unavailable: true }).catch(() => {}); });
 
@@ -42,6 +49,7 @@ export async function createApp({ config, timers = realTimers, rng = Math.random
   app.get('/api/join-qr.svg', async (req, res) => {
     res.type('image/svg+xml').send(await QRCode.toString(joinUrl(), { type: 'svg', margin: 1 }));
   });
+  app.use('/api/manage', requireLocal, requirePin(config), manageRouter({ config, store, index }));
   app.get('/', (req, res) => res.redirect('/play'));
   for (const p of ['play', 'host', 'tv', 'manage']) app.get(`/${p}`, (req, res) => res.sendFile(path.join(pub, `${p}.html`)));
   app.use('/songs', requireLocal, express.static(config.songsDir, { index: false }));
@@ -49,9 +57,14 @@ export async function createApp({ config, timers = realTimers, rng = Math.random
   app.use(express.static(pub, { index: false }));
 
   const hub = attachHub({ server, game });
+  const bots = new BotRunner(game, { timers, rng });
+  hub.extra = (c, m) => {
+    if (m.c === 'spawnBots') bots.spawn(Math.max(1, Math.min(14, Math.floor(Number(m.args?.n) || 1))));
+    else if (m.c === 'clearBots') bots.clear();
+  };
 
   return {
-    app, server, game, store, hub, config, timers,
+    app, server, game, store, index, hub, bots, config, timers,
     setPublicUrl(u) { publicUrl = u ? u.replace(/\/$/, '') : null; },
     joinUrl,
     listen(port = config.port) {

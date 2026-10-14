@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ניהול שירים — המסיבה של מאי</title>
+  <link rel="stylesheet" href="/css/theme.css">
+  <style>
+    .wrap { max-width: 980px; margin: 0 auto; padding: 12px; }
+    .wrap .card { text-align: start; margin: 12px 0; }
+    .res { display: flex; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid #eee; }
+    .song { display: grid; grid-template-columns: auto 1fr 1fr 130px; gap: 6px; padding: 10px 0; border-bottom: 2px solid #eee; align-items: center; }
+    .song input[type=text], .song input[type=number] { font: inherit; padding: 6px; border: 2px solid #d9c3a0; border-radius: 8px; width: 100%; }
+    .song .full { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; align-items: center; }
+    .drop { border: 3px dashed var(--brown); border-radius: 18px; padding: 18px; text-align: center; }
+    .drop.over { background: var(--sun); }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <audio id="player" preload="none"></audio>
+  <script type="module" src="/js/manage.js"></script>
+</body>
+</html>

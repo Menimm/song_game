@@ -68,6 +68,7 @@ function songList(s) {
 
 function players(s) {
   return el('div', { class: 'card' }, el('h3', { text: `שחקניות (${s.players.length})` }),
+    el('div', { class: 'row' }, btn('🤖 +3 בוטים', () => cmd('spawnBots', { n: 3 }), 'alt'), btn('הסר בוטים', () => cmd('clearBots'), 'alt')),
     s.players.map((p) => el('div', { class: 'row' }, el('span', { class: 'grow', dir: 'auto', text: `${p.name}${p.bot ? ' 🤖' : ''}${p.connected ? '' : ' (מנותקת)'}` }),
       el('b', { text: p.score }), btn('+10', () => cmd('adjust', { id: p.id, delta: 10 }), 'alt'), btn('−10', () => cmd('adjust', { id: p.id, delta: -10 }), 'alt'),
       btn('✖', () => { if (confirm(`להוציא את ${p.name}?`)) cmd('kick', { id: p.id }); }, 'warn'))));
@@ -84,5 +85,26 @@ function render() {
   ].filter(Boolean));
   tick();
 }
-function tick() { const v = timer.value(); const e = app.querySelector('[data-secs]'); if (v && e) e.textContent = secs(v.remainingMs); }
+// ---- transport bar: play / pause / drag-to-seek for the full song (after the reveal) ----
+const mmss = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+let dragging = false;
+const playBtn = el('button', { class: 'btn sun', onclick: () => { audio.togglePlay(); tick(); } }, '▶');
+const seek = el('input', { type: 'range', min: 0, max: 1, step: 0.1, value: 0 });
+const time = el('span', { class: 'time', text: '0:00 / 0:00' });
+const note = el('span', { class: 'note', text: 'הנגן נפתח אחרי החשיפה (במהלך הסיבוב המשחק שולט בקטעים)' });
+seek.addEventListener('pointerdown', () => { dragging = true; });
+seek.addEventListener('input', () => { time.textContent = `${mmss(Number(seek.value))} / ${mmss(audio.duration)}`; });
+seek.addEventListener('change', () => { audio.seek(Number(seek.value)); dragging = false; tick(); });
+seek.addEventListener('pointerup', () => { dragging = false; });
+document.getElementById('transport').append(playBtn, seek, time, note);
+
+function tick() {
+  const v = timer.value(); const e = app.querySelector('[data-secs]'); if (v && e) e.textContent = secs(v.remainingMs);
+  const full = audio.mode === 'full';
+  playBtn.disabled = !full; seek.disabled = !full; note.hidden = full;
+  playBtn.textContent = audio.playingFull ? '⏸' : '▶';
+  if (!full) { seek.value = 0; time.textContent = '0:00 / 0:00'; return; }
+  seek.max = audio.duration;
+  if (!dragging) { seek.value = audio.position(); time.textContent = `${mmss(audio.position())} / ${mmss(audio.duration)}`; }
+}
 setInterval(tick, 200);

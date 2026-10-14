@@ -1,5 +1,14 @@
+import { Transport } from './transport.js';
+
 export class HostAudio {
-  constructor() { this.ctx = null; this.buffer = null; this.src = null; }
+  constructor() {
+    this.ctx = null; this.buffer = null; this.src = null;
+    this.mode = null;                 // 'clip' (game-driven intro) | 'full' (operator-controlled full song) | null
+    this.transport = new Transport(0);
+    this.gen = 0;
+  }
+
+  get duration() { return this.buffer?.duration ?? 0; }
 
   async unlock() {
     if (!this.ctx) this.ctx = new AudioContext({ latencyHint: 'interactive' });
@@ -23,6 +32,7 @@ export class HostAudio {
   }
 
   playClip(offsetMs, lengthMs, onStarted) {
+    this.mode = 'clip';
     const { src, gain } = this._source();
     const when = this.ctx.currentTime + 0.06; const len = lengthMs / 1000;
     gain.gain.setValueAtTime(0, when);
@@ -33,15 +43,41 @@ export class HostAudio {
     setTimeout(onStarted, 60);                    // ack once the scheduled start time has arrived
   }
 
+  // ---- full song, operator-controlled (play / pause / seek) ----
   playFull(offsetMs) {
-    const { src, gain } = this._source();
-    gain.gain.setValueAtTime(0, this.ctx.currentTime);
-    gain.gain.linearRampToValueAtTime(1, this.ctx.currentTime + 0.15);
-    src.start(0, offsetMs / 1000);
+    this.mode = 'full';
+    this.transport = new Transport(this.duration);
+    this._startFull(offsetMs / 1000);
   }
+
+  _startFull(pos) {
+    const { src, gain } = this._source();
+    const gen = ++this.gen;
+    gain.gain.setValueAtTime(0, this.ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(1, this.ctx.currentTime + 0.08);
+    src.onended = () => { if (gen === this.gen && this.mode === 'full') this.transport.pause(this.ctx.currentTime); };
+    src.start(0, Math.min(pos, Math.max(0, this.duration - 0.01)));
+    this.transport.start(pos, this.ctx.currentTime);
+  }
+
+  togglePlay() {
+    if (this.mode !== 'full') return;
+    const now = this.ctx.currentTime;
+    if (this.transport.playing) { this.transport.pause(now); this.gen++; this.stop(); }
+    else this._startFull(this.transport.pos >= this.duration ? 0 : this.transport.pos);
+  }
+
+  seek(sec) {
+    if (this.mode !== 'full') return;
+    if (this.transport.playing) this._startFull(Math.max(0, Math.min(this.duration, sec)));
+    else this.transport.seek(sec, this.ctx.currentTime);
+  }
+
+  position() { return this.mode === 'full' ? this.transport.position(this.ctx.currentTime) : 0; }
+  get playingFull() { return this.mode === 'full' && this.transport.playing; }
 
   pause() { this.ctx?.suspend(); }
   resume() { this.ctx?.resume(); }
   stop() { try { this.src?.stop(); } catch { /* already stopped */ } this.src = null; }
-  release() { this.stop(); this.buffer = null; }
+  release() { this.gen++; this.stop(); this.buffer = null; this.mode = null; this.transport = new Transport(0); }
 }
