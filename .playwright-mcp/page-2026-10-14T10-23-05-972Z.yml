@@ -1,0 +1,88 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e7]:
+    - generic [ref=f1e8]:
+      - generic [ref=f1e9]: מסך מנחה
+      - generic [ref=f1e10]: "קוד: TUJX"
+      - generic [ref=f1e11]: http://192.168.1.99:3100/play?c=TUJX
+      - link "פתח טלוויזיה" [ref=f1e12] [cursor=pointer]:
+        - /url: /tv
+      - link "ניהול שירים" [ref=f1e13] [cursor=pointer]:
+        - /url: /manage
+    - generic [ref=f1e14]:
+      - generic [ref=f1e15]:
+        - generic [ref=f1e16]:
+          - generic [ref=f1e17]: ממתין
+          - generic [ref=f1e19]:
+            - button "⏸ הפסק" [disabled] [ref=f1e20]
+            - button "🔁 שוב" [disabled] [ref=f1e21]
+            - button "➕ ארוך יותר" [disabled] [ref=f1e22]
+            - button "👀 חשוף" [disabled] [ref=f1e23]
+            - button "⏭ דלג" [disabled] [ref=f1e24]
+            - button "➡ הבא" [disabled] [ref=f1e25]
+          - generic [ref=f1e26]:
+            - generic [ref=f1e27]: "ניסיונות (שלבים):"
+            - combobox [ref=f1e28]:
+              - option "1"
+              - option "2"
+              - option "3"
+              - option "4"
+              - option "5" [selected]
+        - generic [ref=f1e30]:
+          - heading "שחקניות (0)" [level=3] [ref=f1e31]
+          - generic [ref=f1e32]:
+            - button "🤖 +3 בוטים" [ref=f1e33] [cursor=pointer]
+            - button "הסר בוטים" [ref=f1e34] [cursor=pointer]
+      - generic [ref=f1e35]:
+        - generic [ref=f1e36]:
+          - heading "שירים" [level=3] [ref=f1e37]
+          - button "🎲 אקראי" [ref=f1e38] [cursor=pointer]
+        - generic [ref=f1e39]:
+          - button "▶" [ref=f1e40] [cursor=pointer]
+          - generic [ref=f1e41]: Shake It Off — Taylor Swift
+        - generic [ref=f1e42]:
+          - button "▶" [ref=f1e43] [cursor=pointer]
+          - generic [ref=f1e44]: Flowers — Miley Cyrus
+        - generic [ref=f1e45]:
+          - button "▶" [ref=f1e46] [cursor=pointer]
+          - generic [ref=f1e47]: Roar — Katy Perry
+        - generic [ref=f1e48]:
+          - button "▶" [ref=f1e49] [cursor=pointer]
+          - generic [ref=f1e50]: Watermelon Sugar — Harry Styles
+        - generic [ref=f1e51]:
+          - button "▶" [ref=f1e52] [cursor=pointer]
+          - generic [ref=f1e53]: Don't Start Now — Dua Lipa
+        - generic [ref=f1e54]:
+          - button "▶" [ref=f1e55] [cursor=pointer]
+          - generic [ref=f1e56]: Hips Don't Lie (feat. Wyclef Jean) — Shakira
+        - generic [ref=f1e57]:
+          - button "▶" [ref=f1e58] [cursor=pointer]
+          - generic [ref=f1e59]: הרקדן האוטומטי — צביקה פיק
+        - generic [ref=f1e60]:
+          - button "▶" [ref=f1e61] [cursor=pointer]
+          - generic [ref=f1e62]: יש לי ציפור קטנה בלב — Noa Kirel;נועה קירל
+        - generic [ref=f1e63]:
+          - button "▶" [ref=f1e64] [cursor=pointer]
+          - generic [ref=f1e65]: מיליון דולר — Noa Kirel, שחר סאול
+        - generic [ref=f1e66]:
+          - button "▶" [ref=f1e67] [cursor=pointer]
+          - generic [ref=f1e68]: אם אתה גבר — Noa Kirel
+        - generic [ref=f1e69]:
+          - button "▶" [ref=f1e70] [cursor=pointer]
+          - generic [ref=f1e71]: אמבולנס — Noa Kirel, Mergui
+        - generic [ref=f1e72]:
+          - button "▶" [ref=f1e73] [cursor=pointer]
+          - generic [ref=f1e74]: Tikitas — Noa Kirel, Stephane Legar, Arisa
+        - generic [ref=f1e75]:
+          - button "▶" [ref=f1e76] [cursor=pointer]
+          - generic [ref=f1e77]: חללית — גזוז
+        - generic [ref=f1e78]:
+          - button "▶" [ref=f1e79] [cursor=pointer]
+          - generic [ref=f1e80]: תשע בכיכר — גזוז
+        - generic [ref=f1e81]:
+          - button "▶" [ref=f1e82] [cursor=pointer]
+          - generic [ref=f1e83]: רוני — גזוז
+  - generic [ref=f1e2]:
+    - button "▶" [disabled] [ref=f1e3]
+    - slider [disabled] [ref=f1e4]: "0"
+    - generic [ref=f1e5]: 0:00 / 0:00
+    - generic [ref=f1e6]: הנגן נפתח אחרי החשיפה (במהלך הסיבוב המשחק שולט בקטעים)

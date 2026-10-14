@@ -434,6 +434,151 @@
           "artist": "אנה זק"
         }
       ]
+    },
+    {
+      "id": "s_1382044d",
+      "title": "Wrecking Ball",
+      "artist": "Miley Cyrus",
+      "album": "Bangerz (Deluxe Version)",
+      "file": "s_1382044d.flac",
+      "srcRel": "Various Artists - Hi-Res Masters Girl Power [24Bit-FLAC] FLAC [PMEDIA] ⭐️/82. Miley Cyrus - Wrecking Ball.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "Uptown Funk",
+          "artist": "Mark Ronson"
+        },
+        {
+          "title": "Rehab",
+          "artist": "Amy Winehouse"
+        },
+        {
+          "title": "Beggin'",
+          "artist": "Måneskin"
+        }
+      ]
+    },
+    {
+      "id": "s_6905a76d",
+      "title": "Blank Space",
+      "artist": "Taylor Swift",
+      "album": "1989 (Deluxe Edition)",
+      "file": "s_6905a76d.flac",
+      "srcRel": "TIDAL DL/Album/Taylor Swift/[M] 1989 (Deluxe Edition) [121444594] [2014]/02 - Taylor Swift - Blank Space.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "Whenever, Wherever",
+          "artist": "Shakira"
+        },
+        {
+          "title": "Uptown Funk (feat. Bruno Mars)",
+          "artist": "Mark Ronson, Bruno Mars"
+        },
+        {
+          "title": "La Tortura (feat. Alejandro Sanz)",
+          "artist": "Shakira, Alejandro Sanz"
+        }
+      ]
+    },
+    {
+      "id": "s_a2df6de3",
+      "title": "A Sky Full of Stars",
+      "artist": "Coldplay",
+      "album": "Ghost Stories",
+      "file": "s_a2df6de3.flac",
+      "srcRel": "TIDAL DL/Playlist/Coldplay - TIDAL Masters/04 - Coldplay - A Sky Full of Stars.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "CAN'T STOP THE FEELING! (from DreamWorks Animation's \"TROLLS\")",
+          "artist": "Justin Timberlake"
+        },
+        {
+          "title": "Rehab",
+          "artist": "Amy Winehouse"
+        },
+        {
+          "title": "Get Lucky (Radio Edit) [feat. Pharrell Williams and Nile Rodgers]",
+          "artist": "Daft Punk, Pharrell Williams, Nile Rodgers"
+        }
+      ]
+    },
+    {
+      "id": "s_c9b3ef9b",
+      "title": "Bad Romance",
+      "artist": "Lady Gaga",
+      "album": "The Fame Monster",
+      "file": "s_c9b3ef9b.flac",
+      "srcRel": "V7ORKZ~K/30. Lady Gaga - Bad Romance.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "Whenever, Wherever",
+          "artist": "Shakira"
+        },
+        {
+          "title": "About Damn Time",
+          "artist": "Lizzo"
+        },
+        {
+          "title": "Watermelon Sugar",
+          "artist": "Harry Styles"
+        }
+      ]
+    },
+    {
+      "id": "s_066c5b9e",
+      "title": "Calm Down",
+      "artist": "Rema",
+      "album": "Calm Down",
+      "file": "s_066c5b9e.flac",
+      "srcRel": "TIDAL DL/Playlist/Staff Picks- Dolby Atmos/21 - Rema, Selena Gomez - Calm Down.flac",
+      "art": "jpg",
+      "offsetMs": 0,
+      "hook": "",
+      "lang": "en",
+      "bpm": null,
+      "enabled": true,
+      "unavailable": false,
+      "distractors": [
+        {
+          "title": "Estoy Aquí",
+          "artist": "Shakira"
+        },
+        {
+          "title": "Sol, Playa Y Arena",
+          "artist": "Reywil Alexander, Norci Morales, Stidlmusic"
+        },
+        {
+          "title": "Blinding Lights",
+          "artist": "The Weeknd"
+        }
+      ]
     }
   ]
 }

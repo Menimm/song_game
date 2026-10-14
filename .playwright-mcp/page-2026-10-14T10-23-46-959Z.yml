@@ -1,0 +1,322 @@
+- generic [ref=f2e2]:
+  - generic [ref=f2e3]:
+    - generic [ref=f2e4]: ניהול שירים
+    - generic [ref=f2e5]: "אינדקס: 40,640 קבצים"
+    - button "רענון אינדקס" [ref=f2e6] [cursor=pointer]
+    - link "למסך המנחה" [ref=f2e7] [cursor=pointer]:
+      - /url: /host
+  - generic [ref=f2e8]:
+    - generic [ref=f2e9]:
+      - heading "🔎 חיפוש ב-BIGBOX" [level=3] [ref=f2e10]
+      - textbox "חיפוש שיר או אמן בעברית או באנגלית…" [ref=f2e12]
+    - generic [ref=f2e14]:
+      - heading "🎧 ייבוא מפלייליסט" [level=3] [ref=f2e15]
+      - textbox "קישור לפלייליסט בספוטיפיי — או רשימת שירים (שיר - אמן), שורה לכל שיר" [ref=f2e16]
+      - button "בדיקה מול BIGBOX" [ref=f2e17] [cursor=pointer]
+    - generic [ref=f2e18]: גררו לכאן קובץ שיר (mp3 / flac / m4a…) אם הוא לא ב-BIGBOX
+    - generic [ref=f2e21]:
+      - button "✨ השלם תשובות שגויות לכל השירים" [ref=f2e22] [cursor=pointer]
+      - button "🥁 חשב BPM לשירים שחסר להם" [ref=f2e23] [cursor=pointer]
+    - generic [ref=f2e24]:
+      - heading "🎵 השירים במשחק (15/15)" [level=3] [ref=f2e25]
+      - generic [ref=f2e26]:
+        - generic [ref=f2e27]:
+          - checkbox [checked] [ref=f2e28]
+          - textbox [ref=f2e30]: Shake It Off
+          - textbox [ref=f2e31]: Taylor Swift
+          - generic [ref=f2e32]:
+            - button "↑" [ref=f2e33] [cursor=pointer]
+            - button "↓" [ref=f2e34] [cursor=pointer]
+            - button "🗑" [ref=f2e35] [cursor=pointer]
+          - generic [ref=f2e36]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e37]
+            - generic [ref=f2e38]:
+              - generic [ref=f2e39]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e40]: "0"
+              - button "▶ 1ש׳" [ref=f2e41] [cursor=pointer]
+            - generic [ref=f2e42]: BPM לא חושב
+          - generic [ref=f2e43]:
+            - textbox "תשובה שגויה 1" [ref=f2e44]: Beggin'
+            - textbox "תשובה שגויה 2" [ref=f2e45]: Wrecking Ball
+            - textbox "תשובה שגויה 3" [ref=f2e46]: A Sky Full of Stars
+          - button "✨ הצע תשובות שגויות" [ref=f2e48] [cursor=pointer]
+        - generic [ref=f2e49]:
+          - checkbox [checked] [ref=f2e50]
+          - textbox [ref=f2e52]: Flowers
+          - textbox [ref=f2e53]: Miley Cyrus
+          - generic [ref=f2e54]:
+            - button "↑" [ref=f2e55] [cursor=pointer]
+            - button "↓" [ref=f2e56] [cursor=pointer]
+            - button "🗑" [ref=f2e57] [cursor=pointer]
+          - generic [ref=f2e58]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e59]
+            - generic [ref=f2e60]:
+              - generic [ref=f2e61]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e62]: "0"
+              - button "▶ 1ש׳" [ref=f2e63] [cursor=pointer]
+            - generic [ref=f2e64]: BPM לא חושב
+          - generic [ref=f2e65]:
+            - textbox "תשובה שגויה 1" [ref=f2e66]: I'm Good (Blue)
+            - textbox "תשובה שגויה 2" [ref=f2e67]: As It Was
+            - textbox "תשובה שגויה 3" [ref=f2e68]: Calm Down
+          - button "✨ הצע תשובות שגויות" [ref=f2e70] [cursor=pointer]
+        - generic [ref=f2e71]:
+          - checkbox [checked] [ref=f2e72]
+          - textbox [ref=f2e74]: Roar
+          - textbox [ref=f2e75]: Katy Perry
+          - generic [ref=f2e76]:
+            - button "↑" [ref=f2e77] [cursor=pointer]
+            - button "↓" [ref=f2e78] [cursor=pointer]
+            - button "🗑" [ref=f2e79] [cursor=pointer]
+          - generic [ref=f2e80]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e81]
+            - generic [ref=f2e82]:
+              - generic [ref=f2e83]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e84]: "0"
+              - button "▶ 1ש׳" [ref=f2e85] [cursor=pointer]
+            - generic [ref=f2e86]: BPM לא חושב
+          - generic [ref=f2e87]:
+            - textbox "תשובה שגויה 1" [ref=f2e88]: Party Rock Anthem
+            - textbox "תשובה שגויה 2" [ref=f2e89]: I'm Good (Blue)
+            - textbox "תשובה שגויה 3" [ref=f2e90]: On The Floor
+          - button "✨ הצע תשובות שגויות" [ref=f2e92] [cursor=pointer]
+        - generic [ref=f2e93]:
+          - checkbox [checked] [ref=f2e94]
+          - textbox [ref=f2e96]: Watermelon Sugar
+          - textbox [ref=f2e97]: Harry Styles
+          - generic [ref=f2e98]:
+            - button "↑" [ref=f2e99] [cursor=pointer]
+            - button "↓" [ref=f2e100] [cursor=pointer]
+            - button "🗑" [ref=f2e101] [cursor=pointer]
+          - generic [ref=f2e102]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e103]
+            - generic [ref=f2e104]:
+              - generic [ref=f2e105]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e106]: "0"
+              - button "▶ 1ש׳" [ref=f2e107] [cursor=pointer]
+            - generic [ref=f2e108]: BPM לא חושב
+          - generic [ref=f2e109]:
+            - textbox "תשובה שגויה 1" [ref=f2e110]: Love Again
+            - textbox "תשובה שגויה 2" [ref=f2e111]: On The Floor
+            - textbox "תשובה שגויה 3" [ref=f2e112]: Fight Song
+          - button "✨ הצע תשובות שגויות" [ref=f2e114] [cursor=pointer]
+        - generic [ref=f2e115]:
+          - checkbox [checked] [ref=f2e116]
+          - textbox [ref=f2e118]: Don't Start Now
+          - textbox [ref=f2e119]: Dua Lipa
+          - generic [ref=f2e120]:
+            - button "↑" [ref=f2e121] [cursor=pointer]
+            - button "↓" [ref=f2e122] [cursor=pointer]
+            - button "🗑" [ref=f2e123] [cursor=pointer]
+          - generic [ref=f2e124]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e125]
+            - generic [ref=f2e126]:
+              - generic [ref=f2e127]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e128]: "0"
+              - button "▶ 1ש׳" [ref=f2e129] [cursor=pointer]
+            - generic [ref=f2e130]: BPM לא חושב
+          - generic [ref=f2e131]:
+            - textbox "תשובה שגויה 1" [ref=f2e132]: Firework
+            - textbox "תשובה שגויה 2" [ref=f2e133]: We Found Love
+            - textbox "תשובה שגויה 3" [ref=f2e134]: TiK ToK
+          - button "✨ הצע תשובות שגויות" [ref=f2e136] [cursor=pointer]
+        - generic [ref=f2e137]:
+          - checkbox [checked] [ref=f2e138]
+          - textbox [ref=f2e140]: Hips Don't Lie (feat. Wyclef Jean)
+          - textbox [ref=f2e141]: Shakira
+          - generic [ref=f2e142]:
+            - button "↑" [ref=f2e143] [cursor=pointer]
+            - button "↓" [ref=f2e144] [cursor=pointer]
+            - button "🗑" [ref=f2e145] [cursor=pointer]
+          - generic [ref=f2e146]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e147]
+            - generic [ref=f2e148]:
+              - generic [ref=f2e149]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e150]: "0"
+              - button "▶ 1ש׳" [ref=f2e151] [cursor=pointer]
+            - generic [ref=f2e152]: BPM לא חושב
+          - generic [ref=f2e153]:
+            - textbox "תשובה שגויה 1" [ref=f2e154]: Can't Stop the Feeling!
+            - textbox "תשובה שגויה 2" [ref=f2e155]: Hips Don't Lie
+            - textbox "תשובה שגויה 3" [ref=f2e156]: Shallow
+          - button "✨ הצע תשובות שגויות" [ref=f2e158] [cursor=pointer]
+        - generic [ref=f2e159]:
+          - checkbox [checked] [ref=f2e160]
+          - textbox [ref=f2e162]: הרקדן האוטומטי
+          - textbox [ref=f2e163]: צביקה פיק
+          - generic [ref=f2e164]:
+            - button "↑" [ref=f2e165] [cursor=pointer]
+            - button "↓" [ref=f2e166] [cursor=pointer]
+            - button "🗑" [ref=f2e167] [cursor=pointer]
+          - generic [ref=f2e168]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e169]
+            - generic [ref=f2e170]:
+              - generic [ref=f2e171]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e172]: "0"
+              - button "▶ 1ש׳" [ref=f2e173] [cursor=pointer]
+            - generic [ref=f2e174]: BPM לא חושב
+          - generic [ref=f2e175]:
+            - textbox "תשובה שגויה 1" [ref=f2e176]: לב דפוק
+            - textbox "תשובה שגויה 2" [ref=f2e177]: אמבולנס
+            - textbox "תשובה שגויה 3" [ref=f2e178]: טיקיטאס
+          - button "✨ הצע תשובות שגויות" [ref=f2e180] [cursor=pointer]
+        - generic [ref=f2e181]:
+          - checkbox [checked] [ref=f2e182]
+          - textbox [ref=f2e184]: יש לי ציפור קטנה בלב
+          - textbox [ref=f2e185]: Noa Kirel;נועה קירל
+          - generic [ref=f2e186]:
+            - button "↑" [ref=f2e187] [cursor=pointer]
+            - button "↓" [ref=f2e188] [cursor=pointer]
+            - button "🗑" [ref=f2e189] [cursor=pointer]
+          - generic [ref=f2e190]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e191]
+            - generic [ref=f2e192]:
+              - generic [ref=f2e193]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e194]: "0"
+              - button "▶ 1ש׳" [ref=f2e195] [cursor=pointer]
+            - generic [ref=f2e196]: BPM לא חושב
+          - generic [ref=f2e197]:
+            - textbox "תשובה שגויה 1" [ref=f2e198]: מיליון דולר
+            - textbox "תשובה שגויה 2" [ref=f2e199]: פעמון
+            - textbox "תשובה שגויה 3" [ref=f2e200]: חללית
+          - button "✨ הצע תשובות שגויות" [ref=f2e202] [cursor=pointer]
+        - generic [ref=f2e203]:
+          - checkbox [checked] [ref=f2e204]
+          - textbox [ref=f2e206]: מיליון דולר
+          - textbox [ref=f2e207]: Noa Kirel, שחר סאול
+          - generic [ref=f2e208]:
+            - button "↑" [ref=f2e209] [cursor=pointer]
+            - button "↓" [ref=f2e210] [cursor=pointer]
+            - button "🗑" [ref=f2e211] [cursor=pointer]
+          - generic [ref=f2e212]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e213]
+            - generic [ref=f2e214]:
+              - generic [ref=f2e215]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e216]: "0"
+              - button "▶ 1ש׳" [ref=f2e217] [cursor=pointer]
+            - generic [ref=f2e218]: BPM לא חושב
+          - generic [ref=f2e219]:
+            - textbox "תשובה שגויה 1" [ref=f2e220]: פעמון
+            - textbox "תשובה שגויה 2" [ref=f2e221]: אמבולנס
+            - textbox "תשובה שגויה 3" [ref=f2e222]: תשע בכיכר
+          - button "✨ הצע תשובות שגויות" [ref=f2e224] [cursor=pointer]
+        - generic [ref=f2e225]:
+          - checkbox [checked] [ref=f2e226]
+          - textbox [ref=f2e228]: אם אתה גבר
+          - textbox [ref=f2e229]: Noa Kirel
+          - generic [ref=f2e230]:
+            - button "↑" [ref=f2e231] [cursor=pointer]
+            - button "↓" [ref=f2e232] [cursor=pointer]
+            - button "🗑" [ref=f2e233] [cursor=pointer]
+          - generic [ref=f2e234]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e235]
+            - generic [ref=f2e236]:
+              - generic [ref=f2e237]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e238]: "0"
+              - button "▶ 1ש׳" [ref=f2e239] [cursor=pointer]
+            - generic [ref=f2e240]: BPM לא חושב
+          - generic [ref=f2e241]:
+            - textbox "תשובה שגויה 1" [ref=f2e242]: יש לי ציפור קטנה בלב
+            - textbox "תשובה שגויה 2" [ref=f2e243]: תשע בכיכר
+            - textbox "תשובה שגויה 3" [ref=f2e244]: אמא ודני
+          - button "✨ הצע תשובות שגויות" [ref=f2e246] [cursor=pointer]
+        - generic [ref=f2e247]:
+          - checkbox [checked] [ref=f2e248]
+          - textbox [ref=f2e250]: אמבולנס
+          - textbox [ref=f2e251]: Noa Kirel, Mergui
+          - generic [ref=f2e252]:
+            - button "↑" [ref=f2e253] [cursor=pointer]
+            - button "↓" [ref=f2e254] [cursor=pointer]
+            - button "🗑" [ref=f2e255] [cursor=pointer]
+          - generic [ref=f2e256]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e257]
+            - generic [ref=f2e258]:
+              - generic [ref=f2e259]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e260]: "0"
+              - button "▶ 1ש׳" [ref=f2e261] [cursor=pointer]
+            - generic [ref=f2e262]: BPM לא חושב
+          - generic [ref=f2e263]:
+            - textbox "תשובה שגויה 1" [ref=f2e264]: תשע בכיכר
+            - textbox "תשובה שגויה 2" [ref=f2e265]: מיליון דולר
+            - textbox "תשובה שגויה 3" [ref=f2e266]: טיקיטאס
+          - button "✨ הצע תשובות שגויות" [ref=f2e268] [cursor=pointer]
+        - generic [ref=f2e269]:
+          - checkbox [checked] [ref=f2e270]
+          - textbox [ref=f2e272]: Tikitas
+          - textbox [ref=f2e273]: Noa Kirel, Stephane Legar, Arisa
+          - generic [ref=f2e274]:
+            - button "↑" [ref=f2e275] [cursor=pointer]
+            - button "↓" [ref=f2e276] [cursor=pointer]
+            - button "🗑" [ref=f2e277] [cursor=pointer]
+          - generic [ref=f2e278]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e279]
+            - generic [ref=f2e280]:
+              - generic [ref=f2e281]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e282]: "0"
+              - button "▶ 1ש׳" [ref=f2e283] [cursor=pointer]
+            - generic [ref=f2e284]: BPM לא חושב
+          - generic [ref=f2e285]:
+            - textbox "תשובה שגויה 1" [ref=f2e286]: TiK ToK
+            - textbox "תשובה שגויה 2" [ref=f2e287]: Uptown Funk
+            - textbox "תשובה שגויה 3" [ref=f2e288]: Beggin'
+          - button "✨ הצע תשובות שגויות" [ref=f2e290] [cursor=pointer]
+        - generic [ref=f2e291]:
+          - checkbox [checked] [ref=f2e292]
+          - textbox [ref=f2e294]: חללית
+          - textbox [ref=f2e295]: גזוז
+          - generic [ref=f2e296]:
+            - button "↑" [ref=f2e297] [cursor=pointer]
+            - button "↓" [ref=f2e298] [cursor=pointer]
+            - button "🗑" [ref=f2e299] [cursor=pointer]
+          - generic [ref=f2e300]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e301]
+            - generic [ref=f2e302]:
+              - generic [ref=f2e303]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e304]: "0"
+              - button "▶ 1ש׳" [ref=f2e305] [cursor=pointer]
+            - generic [ref=f2e306]: BPM לא חושב
+          - generic [ref=f2e307]:
+            - textbox "תשובה שגויה 1" [ref=f2e308]: אם אתה גבר
+            - textbox "תשובה שגויה 2" [ref=f2e309]: יש לי ציפור קטנה בלב
+            - textbox "תשובה שגויה 3" [ref=f2e310]: אמא ודני
+          - button "✨ הצע תשובות שגויות" [ref=f2e312] [cursor=pointer]
+        - generic [ref=f2e313]:
+          - checkbox [checked] [ref=f2e314]
+          - textbox [ref=f2e316]: תשע בכיכר
+          - textbox [ref=f2e317]: גזוז
+          - generic [ref=f2e318]:
+            - button "↑" [ref=f2e319] [cursor=pointer]
+            - button "↓" [ref=f2e320] [cursor=pointer]
+            - button "🗑" [ref=f2e321] [cursor=pointer]
+          - generic [ref=f2e322]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e323]
+            - generic [ref=f2e324]:
+              - generic [ref=f2e325]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e326]: "0"
+              - button "▶ 1ש׳" [ref=f2e327] [cursor=pointer]
+            - generic [ref=f2e328]: BPM לא חושב
+          - generic [ref=f2e329]:
+            - textbox "תשובה שגויה 1" [ref=f2e330]: לב דפוק
+            - textbox "תשובה שגויה 2" [ref=f2e331]: Unicorn
+            - textbox "תשובה שגויה 3" [ref=f2e332]: אם אתה גבר
+          - button "✨ הצע תשובות שגויות" [ref=f2e334] [cursor=pointer]
+        - generic [ref=f2e335]:
+          - checkbox [checked] [ref=f2e336]
+          - textbox [ref=f2e338]: רוני
+          - textbox [ref=f2e339]: גזוז
+          - generic [ref=f2e340]:
+            - button "↑" [ref=f2e341] [cursor=pointer]
+            - button "↓" [ref=f2e342] [cursor=pointer]
+            - button "🗑" [ref=f2e343] [cursor=pointer]
+          - generic [ref=f2e344]:
+            - textbox "שורת מילים קטנה (אופציונלי)" [ref=f2e345]
+            - generic [ref=f2e346]:
+              - generic [ref=f2e347]: התחלה (ש׳)
+              - spinbutton "התחלה בשניות" [ref=f2e348]: "0"
+              - button "▶ 1ש׳" [ref=f2e349] [cursor=pointer]
+            - generic [ref=f2e350]: BPM לא חושב
+          - generic [ref=f2e351]:
+            - textbox "תשובה שגויה 1" [ref=f2e352]: פנתרה
+            - textbox "תשובה שגויה 2" [ref=f2e353]: Unicorn
+            - textbox "תשובה שגויה 3" [ref=f2e354]: מי זאת
+          - button "✨ הצע תשובות שגויות" [ref=f2e356] [cursor=pointer]
